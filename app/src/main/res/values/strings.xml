@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Personal Accounting</string>
+    <string name="pref_name">Accounting_PREF</string>
+</resources>

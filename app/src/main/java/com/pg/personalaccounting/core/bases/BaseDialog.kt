@@ -4,7 +4,7 @@ import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 
-abstract class BaseDialog(context: Context, private val viewID: Int) : Dialog(context) {
+abstract class BaseDialog(context: Context?, private val viewID: Int) : Dialog(context!!) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(viewID)

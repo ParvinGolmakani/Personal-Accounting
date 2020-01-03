@@ -4,5 +4,11 @@
     <string name="home">Home</string>
     <string name="account">Account</string>
     <string name="report">Report</string>
-    <string name="setting">Setting</string>
+    <string name="Settings">Settings</string>
+    <string name="Password">Password</string>
+    <string name="App_theme">App theme</string>
+    <string name="drak">drak</string>
+    <string name="about_us">About us</string>
+    <string name="contact_us">Contact us</string>
+    <string name="share">share</string>
 </resources>

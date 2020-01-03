@@ -5,4 +5,7 @@
     <string name="account">Account</string>
     <string name="report">Report</string>
     <string name="setting">Setting</string>
+    <string name="personal_accounting">Personal Accounting</string>
+    <string name="deposit">DEPOSIT</string>
+    <string name="withdraw">WITHDRAW</string>
 </resources>

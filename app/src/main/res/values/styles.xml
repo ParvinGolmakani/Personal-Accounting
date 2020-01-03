@@ -10,6 +10,8 @@
         <item name="textColor">#000000</item>
         <item name="onSelectedColor">#000000</item>
         <item name="onUnSelectedColor">#666666</item>
+        <item name="positiveColor">@color/positiveColor</item>
+        <item name="negativeColor">@color/negativeColor</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -20,12 +22,15 @@
         <item name="backgroundColor">#000000</item>
         <item name="textColor">#ffffff</item>
         <item name="onSelectedColor">#D6D6D6</item>
-        <item name="onUnSelectedColor">#666666</item>
+        <item name="positiveColor">@color/positiveColor</item>
+        <item name="negativeColor">@color/negativeColor</item>
+
     </style>
 
     <!--    text styles-->
     <style name="TextBig">
         <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">?textColor</item>
     </style>
 

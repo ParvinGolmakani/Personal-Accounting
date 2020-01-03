@@ -5,4 +5,6 @@
     <attr name="textColorSecondary" format="color"/>
     <attr name="onSelectedColor" format="color"/>
     <attr name="onUnSelectedColor" format="color"/>
+    <attr name="positiveColor" format="color"/>
+    <attr name="negativeColor" format="color"/>
 </resources>

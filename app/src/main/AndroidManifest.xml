@@ -12,6 +12,7 @@
         android:supportsRtl="false"
         android:theme="@style/LightTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".view.deposit_withdraw.DepositWithdrawActivity"></activity>
         <activity android:name=".view.main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

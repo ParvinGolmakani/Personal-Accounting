@@ -12,7 +12,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.pg.personalaccounting"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -32,19 +32,21 @@ dependencies {
     def room_version = "2.2.3"
     def constraint_layout_version = "1.1.3"
     def coroutines_version = "1.1.1"
+    def sdp_version = "1.0.6"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     // kotlin lib
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // default libs
     implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    // views
+    // default views
     implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -53,8 +55,11 @@ dependencies {
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
+    // scale lib
+    implementation "com.intuit.sdp:sdp-android:$sdp_version"
+    implementation "com.intuit.ssp:ssp-android:$sdp_version"
+
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
-
 
 }

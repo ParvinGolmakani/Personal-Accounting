@@ -28,10 +28,10 @@ class MainActivity : BaseActivity(R.layout.activity_main) ,BottomNavigationView.
 
         var fragment: Fragment? = null
         when (menuItem.itemId) {
-            R.id.navHome -> fragment = HomeFragment()
-            R.id.navAccount -> fragment = AccountFragment()
-            R.id.navReport -> fragment = ReportFragment()
-            R.id.navSetting -> fragment = SettingFragment()
+            R.id.navHome -> fragment = HomeFragment.getInstance()
+            R.id.navAccount -> fragment = AccountFragment.getInstance()
+            R.id.navReport -> fragment = ReportFragment.getInstance()
+            R.id.navSetting -> fragment = SettingFragment.getInstance()
         }
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
             transaction.replace(R.id.fragmentContainer, fragment!!)

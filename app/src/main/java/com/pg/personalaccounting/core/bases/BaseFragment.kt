@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 
 abstract class BaseFragment(private val viewID: Int) : Fragment() {
 
+
+
     lateinit var mView: View
 
     override fun onCreateView(

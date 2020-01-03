@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="backgroundColor">#ffffff</item>
         <item name="textColor">#000000</item>
+        <item name="onSelectedColor">#000000</item>
+        <item name="onUnSelectedColor">#666666</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -17,6 +19,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="backgroundColor">#000000</item>
         <item name="textColor">#ffffff</item>
+        <item name="onSelectedColor">#D6D6D6</item>
+        <item name="onUnSelectedColor">#666666</item>
     </style>
 
     <!--    text styles-->

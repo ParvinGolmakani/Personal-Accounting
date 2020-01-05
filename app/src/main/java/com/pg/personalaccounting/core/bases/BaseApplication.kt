@@ -7,6 +7,7 @@ import com.pg.personalaccounting.R
 
 class BaseApplication : Application() {
     companion object {
+        lateinit var database:AppDataBase
         lateinit var preferences: SharedPreferences
         lateinit var preferencesEditor: SharedPreferences.Editor
 
@@ -17,6 +18,7 @@ class BaseApplication : Application() {
         super.onCreate()
         preferences = provideSharedPreferences()
         preferencesEditor = preferences.edit()
+        database = AppDataBase.getDatabase(this)
     }
 
     private fun provideSharedPreferences(): SharedPreferences {

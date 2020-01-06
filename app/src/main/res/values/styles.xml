@@ -6,7 +6,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundColor">#ffffff</item>
+        <item name="backgroundColor">#F7F7F7</item>
+        <item name="cardItemBackground">#FFFFFF</item>
         <item name="textColor">#000000</item>
         <item name="onSelectedColor">#000000</item>
         <item name="onUnSelectedColor">#666666</item>
@@ -19,7 +20,8 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="backgroundColor">#000000</item>
+        <item name="backgroundColor">#1F2130</item>
+        <item name="cardItemBackground">#FFFFFF</item>
         <item name="textColor">#ffffff</item>
         <item name="onSelectedColor">#D6D6D6</item>
         <item name="positiveColor">@color/positiveColor</item>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="normalPadding">@dimen/_8sdp</dimen>
+    <dimen name="smallPadding">@dimen/_4sdp</dimen>
     <dimen name="bigPadding">@dimen/_16sdp</dimen>
 </resources>

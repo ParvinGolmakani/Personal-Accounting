@@ -78,7 +78,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting) {
 
     private fun saveAccount() {
         GlobalScope.launch {
-            val account = Account(0, "type0", 12, "mydate", 1000f, "mellat")
+            val account = Account(0, "type0", "112233", "mydate", 1000f, "mellat")
             BaseApplication.database.accountDao().insertAccount(account)
             withContext(Dispatchers.Main) {
                 showToast("Account Saved")

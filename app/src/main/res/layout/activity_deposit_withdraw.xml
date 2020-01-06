@@ -11,10 +11,10 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/confirm"
-        android:textColor="@color/white"
+        android:layout_gravity="bottom"
         android:background="?positiveColor"
-        android:layout_gravity="bottom"/>
+        android:text="@string/confirm"
+        android:textColor="@color/white" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -37,6 +37,7 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/normalPadding"
@@ -59,7 +60,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/lightGrey"
+                    android:background="@color/grey"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -81,15 +82,57 @@
             android:orientation="vertical"
             android:padding="@dimen/normalPadding">
 
-            <androidx.appcompat.widget.AppCompatEditText
-                android:id="@+id/dateTV"
-                style="@style/TextBig"
-                android:layout_width="@dimen/_150sdp"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="@dimen/_170sdp"
+                android:layout_height="@dimen/_35sdp"
                 android:background="@drawable/bg_edit_text"
                 android:gravity="center"
-                android:padding="@dimen/normalPadding"
-                android:singleLine="true" />
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/yearET"
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:maxLength="4"
+                    android:text="YYYY"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextBig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/monthET"
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:maxLength="2"
+                    android:text="MM"
+                    android:textColor="@color/black" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextBig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/slash" />
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/dayET"
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:inputType="numberDecimal"
+                    android:maxLength="2"
+                    android:text="DD"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -100,15 +143,16 @@
 
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
-                    android:tint="?textColor"
+                    android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
+                    android:tint="?textColor"
                     app:srcCompat="@drawable/ic_dollar" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/_8sdp"
                     android:text="@string/amount" />
 
 
@@ -132,20 +176,22 @@
 
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
+                    android:tint="?textColor"
                     app:srcCompat="@drawable/ic_description" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/_8sdp"
                     android:text="@string/description" />
 
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/explainsET"
-                    style="@style/TextBig"
+                    style="@style/TextNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/bigPadding"
@@ -163,23 +209,23 @@
 
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
+                    android:tint="?textColor"
                     app:srcCompat="@drawable/ic_credit_card" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     style="@style/TextNormal"
-                    android:layout_weight="1"
-                    android:paddingLeft="@dimen/normalPadding"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/normalPadding"
                     android:text="@string/account" />
 
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/account"
+                    android:id="@+id/selectAccount"
                     style="@style/TextBig"
-                    android:layout_width="@dimen/_210sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/bigPadding"
                     android:layout_marginLeft="@dimen/bigPadding"
@@ -187,6 +233,27 @@
                     android:singleLine="true"
                     android:text="@string/select_account"
                     android:textColor="@color/linkColor" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normalPadding"
+                android:gravity="center|start"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatCheckBox
+                    android:id="@+id/isCheck"
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="@dimen/_24sdp" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/normalPadding"
+                    android:text="@string/this_is_check" />
             </LinearLayout>
 
         </LinearLayout>

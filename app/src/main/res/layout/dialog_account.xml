@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="?backgroundColor"
+    android:orientation="vertical"
+    android:padding="@dimen/normalPadding">
+
+    <View
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="@dimen/_2sdp"
+        android:layout_marginTop="@dimen/normalPadding"
+        android:background="@color/grey" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/accountsRV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_account" />
+
+</LinearLayout>

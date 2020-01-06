@@ -5,4 +5,4 @@ import androidx.room.PrimaryKey
 import java.util.*
 
 @Entity(tableName = "accounts")
-data class Account(@PrimaryKey(autoGenerate = true) val id:Int, val accType:String, val accNumber: Int, val accDate:String, val balance:Float, val bankName:String)
+data class Account(@PrimaryKey(autoGenerate = true) val id:Int, val accType:String, val accNumber: String, val accDate:String, val balance:Float, val bankName:String)

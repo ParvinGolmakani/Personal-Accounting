@@ -13,15 +13,16 @@ import com.pg.personalaccounting.view.setting.SettingFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : BaseActivity(R.layout.activity_main) ,BottomNavigationView.OnNavigationItemSelectedListener{
+class MainActivity : BaseActivity(R.layout.activity_main),
+    BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun afterLoadView() {
         initBottomNavigation()
 
     }
-    private fun initBottomNavigation(){
+
+    private fun initBottomNavigation() {
         bottomNavigation.setOnNavigationItemSelectedListener(this)
-        bottomNavigation.selectedItemId = R.id.navHome
     }
 
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
@@ -34,8 +35,13 @@ class MainActivity : BaseActivity(R.layout.activity_main) ,BottomNavigationView.
             R.id.navSetting -> fragment = SettingFragment.getInstance()
         }
         val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragmentContainer, fragment!!)
+        transaction.replace(R.id.fragmentContainer, fragment!!)
         transaction.commit()
         return true
+    }
+
+    override fun onResume() {
+        super.onResume()
+        bottomNavigation.selectedItemId = R.id.navHome
     }
 }

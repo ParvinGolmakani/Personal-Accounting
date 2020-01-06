@@ -32,6 +32,7 @@
             android:paddingRight="@dimen/bigPadding">
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/withdrawBtn"
                 style="@style/TextNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,6 +43,7 @@
                 android:textColor="@color/white" />
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/depositBtn"
                 style="@style/TextNormal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

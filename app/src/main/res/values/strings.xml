@@ -8,4 +8,8 @@
     <string name="personal_accounting">Personal Accounting</string>
     <string name="deposit">DEPOSIT</string>
     <string name="withdraw">WITHDRAW</string>
+    <string name="amount">Amount</string>
+    <string name="description">Description</string>
+    <string name="select_account">Select account</string>
+    <string name="confirm">CONFIRM</string>
 </resources>

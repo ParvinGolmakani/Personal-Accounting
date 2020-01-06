@@ -1,9 +1,11 @@
 package com.pg.personalaccounting.view.home
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.widget.CalendarView
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseFragment
+import com.pg.personalaccounting.view.deposit_withdraw.DepositWithdrawActivity
 import kotlinx.android.synthetic.main.fragment_home.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -23,6 +25,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
     override fun afterLoadView() {
         selectedDateTV.text = getTodayDate()
         calendarView.setOnDateChangeListener(this)
+        depositBtn.setOnClickListener {
+            activity!!.startActivity(Intent(activity,DepositWithdrawActivity::class.java))
+        }
     }
 
     @SuppressLint("SetTextI18n")

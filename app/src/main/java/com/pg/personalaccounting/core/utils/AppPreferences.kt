@@ -13,4 +13,11 @@ object AppPreferences {
     fun getTheme(): Int {
         return BaseApplication.preferences.getInt("theme", R.style.LightTheme)
     }
+    fun saveName(name:String){
+        BaseApplication.preferencesEditor.putString("name", name)
+        BaseApplication.preferencesEditor.apply()
+    }
+    fun getName(): String{
+        return BaseApplication.preferences.getString("name", "Account Name" )!!
+    }
 }

@@ -21,4 +21,7 @@
     <string name="share">share</string>
     <string name="this_is_check">This is check</string>
     <string name="slash">/</string>
+    <string name="yyyy">YYYY</string>
+    <string name="mm">MM</string>
+    <string name="dd">DD</string>
 </resources>

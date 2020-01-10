@@ -8,7 +8,7 @@
     tools:context=".view.deposit_withdraw.DepositWithdrawActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/confirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -47,6 +47,7 @@
                     app:srcCompat="@drawable/ic_back" />
 
                 <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pageTitle"
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +61,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/grey"
+                    android:background="@color/lightGrey"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -94,9 +95,9 @@
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:hint="@string/yyyy"
                     android:inputType="numberDecimal"
                     android:maxLength="4"
-                    android:text="YYYY"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -110,9 +111,10 @@
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:hint="@string/mm"
                     android:inputType="numberDecimal"
                     android:maxLength="2"
-                    android:text="MM"
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -126,9 +128,9 @@
                     style="@style/TextNormal"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:hint="@string/dd"
                     android:inputType="numberDecimal"
                     android:maxLength="2"
-                    android:text="DD"
                     android:textColor="@color/black" />
 
             </LinearLayout>
@@ -190,7 +192,7 @@
 
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/explainsET"
+                    android:id="@+id/descET"
                     style="@style/TextNormal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

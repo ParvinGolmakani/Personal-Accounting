@@ -11,7 +11,6 @@ abstract class BaseActivity(private val viewID: Int) : AppCompatActivity() {
         setTheme(AppPreferences.getTheme())
         setContentView(viewID)
         afterLoadView()
-
     }
 
     abstract fun afterLoadView()

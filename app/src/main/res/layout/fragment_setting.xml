@@ -14,11 +14,10 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
             android:paddingLeft="@dimen/_20sdp"
-
-            app:srcCompat="@drawable/ic_launcher_background" />
+           android:src="@drawable/ic_launcher_background" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTV"

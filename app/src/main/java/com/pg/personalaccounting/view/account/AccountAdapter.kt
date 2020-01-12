@@ -1,48 +1,49 @@
 package com.pg.personalaccounting.view.account
 
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import androidx.recyclerview.widget.RecyclerView
 import com.pg.personalaccounting.R
+import com.pg.personalaccounting.core.bases.BaseAdapter
+import com.pg.personalaccounting.core.bases.BaseViewHolder
 import com.pg.personalaccounting.core.interfaces.AccountInterface
 import com.pg.personalaccounting.core.models.Account
 import kotlinx.android.synthetic.main.item_account.view.*
 
 class AccountAdapter(private val accountInterface: AccountInterface) :
-    ListAdapter<Account, AccountAdapter.AccountViewHolder>(object :
+    BaseAdapter<Account, AccountAdapter.AccountViewHolder>(object :
         DiffUtil.ItemCallback<Account>() {
         override fun areItemsTheSame(oldItem: Account, newItem: Account): Boolean {
             return oldItem.id == newItem.id
+
         }
 
         override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
             return oldItem == newItem
         }
+
     }) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AccountViewHolder {
-        val inflater = LayoutInflater.from(parent.context)
-        return AccountViewHolder(inflater.inflate(R.layout.item_account, parent, false))
+    override val viewID: Int
+        get() = R.layout.item_account
+
+    override fun getViewHolder(parent: View, viewType: Int): AccountViewHolder {
+        return AccountViewHolder(parent)
     }
 
-    override fun onBindViewHolder(holder: AccountViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+    override fun setClickListeners(holder: AccountViewHolder, position: Int) {
         holder.itemView.mainLayout.setOnClickListener {
-            accountInterface.getAccount(item)
+            accountInterface.getAccount(getItem(position))
         }
     }
 
-
-    class AccountViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind(account: Account) {
-            itemView.accountNumberTV.text = account.accNumber
-            itemView.bankNameTV.text = account.bankName
-            itemView.balanceTV.text = account.balance.toString()
+    class AccountViewHolder(itemView: View) : BaseViewHolder<Account>(itemView) {
+        override fun onBind(item: Account) {
+            itemView.accountNumberTV.text = item.accNumber
+            itemView.bankNameTV.text = item.bankName
+            itemView.balanceTV.text = item.balance.toString()
         }
+
     }
+
+
 }

@@ -72,6 +72,7 @@
             android:id="@+id/bottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?backgroundColor"
             android:layout_gravity="bottom"
             android:theme="@style/Widget.Design.BottomNavigationView"
             app:itemIconTint="@color/bottom_nav_selector"

@@ -30,4 +30,7 @@
     <string name="yyyy">YYYY</string>
     <string name="mm">MM</string>
     <string name="dd">DD</string>
+    <string name="no_accounts_here">Sorry there is no accounts here</string>
+    <string name="add_account">ADD ACCOUNT</string>
+    <string name="last_3_transactions">Last 3 Transactions</string>
 </resources>

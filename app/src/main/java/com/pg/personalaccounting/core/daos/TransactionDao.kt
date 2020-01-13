@@ -16,4 +16,7 @@ interface TransactionDao {
 
     @Query("select * from transactions")
     fun getTransaction(): List<Transaction>
+
+    @Query("SELECT * FROM transactions ORDER BY id DESC LIMIT 3")
+    fun getTopThreeTransaction(): List<Transaction>
 }

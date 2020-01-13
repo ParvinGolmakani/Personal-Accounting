@@ -20,7 +20,6 @@ class AccountAdapter(private val accountInterface: AccountInterface) :
         override fun areContentsTheSame(oldItem: Account, newItem: Account): Boolean {
             return oldItem == newItem
         }
-
     }) {
 
     override val viewID: Int
@@ -42,8 +41,5 @@ class AccountAdapter(private val accountInterface: AccountInterface) :
             itemView.bankNameTV.text = item.bankName
             itemView.balanceTV.text = item.balance.toString()
         }
-
     }
-
-
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipToPadding="true"
@@ -53,6 +54,24 @@
                 android:text="@string/deposit"
                 android:textColor="@color/white" />
         </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextBig"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/bigPadding"
+            android:padding="@dimen/normalPadding"
+            android:text="@string/last_3_transactions" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/transactionsRV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/normalPadding"
+            android:layout_marginBottom="@dimen/_40sdp"
+            tools:listitem="@layout/item_transaction" />
+
     </LinearLayout>
 
 

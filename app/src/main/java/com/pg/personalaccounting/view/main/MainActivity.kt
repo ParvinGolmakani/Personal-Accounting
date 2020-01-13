@@ -1,11 +1,11 @@
 package com.pg.personalaccounting.view.main
 
 import android.view.MenuItem
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseActivity
+import com.pg.personalaccounting.core.bases.BaseFragment
 import com.pg.personalaccounting.view.account.AccountFragment
 import com.pg.personalaccounting.view.home.HomeFragment
 import com.pg.personalaccounting.view.report.ReportFragment
@@ -16,32 +16,59 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(R.layout.activity_main),
     BottomNavigationView.OnNavigationItemSelectedListener {
 
+    var activeFragment = HomeFragment.getInstance()
+
     override fun afterLoadView() {
         initBottomNavigation()
-
     }
 
     private fun initBottomNavigation() {
         bottomNavigation.setOnNavigationItemSelectedListener(this)
     }
 
+
     override fun onNavigationItemSelected(menuItem: MenuItem): Boolean {
 
-        var fragment: Fragment? = null
         when (menuItem.itemId) {
-            R.id.navHome -> fragment = HomeFragment.getInstance()
-            R.id.navAccount -> fragment = AccountFragment.getInstance()
-            R.id.navReport -> fragment = ReportFragment.getInstance()
-            R.id.navSetting -> fragment = SettingFragment.getInstance()
+            R.id.navHome -> {
+                showFragment(HomeFragment.getInstance(), "1")
+
+            }
+            R.id.navAccount -> {
+                showFragment(AccountFragment.getInstance(), "2")
+            }
+            R.id.navReport -> {
+                showFragment(ReportFragment.getInstance(), "3")
+            }
+            R.id.navSetting -> {
+                showFragment(SettingFragment.getInstance(), "4")
+            }
         }
-        val transaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment!!)
-        transaction.commit()
         return true
+    }
+
+    private fun showFragment(fragment: BaseFragment, tag: String) {
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
+
+        // hide last fragment
+        if (fragment != activeFragment)
+            ft.hide(activeFragment)
+
+        // show current fragment
+        if (fragment.isAdded) {
+            ft.show(fragment)
+        } else {
+            ft.add(R.id.fragmentContainer, fragment, tag)
+        }
+        ft.commit()
+
+        // set active fragment
+        activeFragment = fragment
     }
 
     override fun onResume() {
         super.onResume()
+        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         bottomNavigation.selectedItemId = R.id.navHome
     }
 }

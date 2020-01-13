@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/normalPadding"
-    android:background="?cardItemBackground"
     android:orientation="vertical"
-    app:cardCornerRadius="@dimen/_4sdp"
-    app:cardUseCompatPadding="true">
+    android:padding="@dimen/normalPadding">
 
-   <LinearLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:orientation="horizontal"
-       >
-      <androidx.appcompat.widget.AppCompatImageView
-          android:layout_marginTop="@dimen/_13sdp"
-          android:padding="@dimen/_8sdp"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          app:srcCompat="@drawable/ic_transform_black_24dp"/>
-       <androidx.appcompat.widget.AppCompatTextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="@string/deposit"
-           android:padding="@dimen/_8sdp"/>
-       <androidx.appcompat.widget.AppCompatTextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="mellat"
-           android:paddingLeft="@dimen/_150sdp"/>
-   </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImage"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:cardBackgroundColor="@color/green"
+        app:cardCornerRadius="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/normalPadding"
+            android:tint="@color/white"
+            app:srcCompat="@drawable/ic_deposit" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/amountTV"
+        style="@style/TextBig"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:layout_marginLeft="@dimen/_40sdp">
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4000$"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="date:"
-            android:paddingLeft="@dimen/_130sdp"/>
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2000$"
+        android:text="+120000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-            />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bankDateTV"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/normalPadding"
+        android:text="@string/bank_name"
+        app:layout_constraintStart_toEndOf="@id/cardImage"
+        app:layout_constraintTop_toTopOf="@id/cardImage" />
 
-    </LinearLayout>
-</androidx.cardview.widget.CardView>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/bankAccountNumber"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/normalPadding"
+        android:text="@string/account_number"
+        app:layout_constraintBottom_toBottomOf="@id/cardImage"
+        app:layout_constraintStart_toEndOf="@id/cardImage"
+        app:layout_constraintTop_toBottomOf="@id/bankDateTV" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

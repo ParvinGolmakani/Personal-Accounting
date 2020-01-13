@@ -4,14 +4,23 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.widget.CalendarView
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pg.personalaccounting.R
+import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.bases.BaseFragment
+import com.pg.personalaccounting.core.interfaces.UpdateDataInterface
+import com.pg.personalaccounting.core.models.Transaction
 import com.pg.personalaccounting.view.deposit_withdraw.DepositWithdrawActivity
+import com.pg.personalaccounting.view.report.TransactionAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
-class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateChangeListener {
+class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateChangeListener,
+    UpdateDataInterface {
 
     companion object {
         private var INSTANCE: BaseFragment? = null
@@ -28,6 +37,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
     var month: Int = 0
     var year: Int = 0
 
+    private val transactionAdapter = TransactionAdapter()
+    private var transactions = ArrayList<Transaction>()
+
     override fun afterLoadView() {
 
         // calender view config
@@ -41,6 +53,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         withdrawBtn.setOnClickListener {
             openDepositWithdrawPage(false)
         }
+
+        initRecyclerView()
+        getData()
     }
 
     private fun openDepositWithdrawPage(isDeposit: Boolean) {
@@ -50,12 +65,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         bundle.putInt("month", month)
         bundle.putInt("day", day)
         bundle.putBoolean("isDeposit", isDeposit)
-
+        DepositWithdrawActivity.updateDataInterface = this
         activity!!.startActivity(
             Intent(activity, DepositWithdrawActivity::class.java).putExtras(
                 bundle
             )
         )
+    }
+
+    private fun initRecyclerView() {
+        transactionsRV.layoutManager = LinearLayoutManager(context)
+        transactionsRV.adapter = transactionAdapter
     }
 
     @SuppressLint("SetTextI18n")
@@ -74,5 +94,21 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         year = date.year
         month = date.month + 1
         return sdf.format(Date())
+    }
+
+    private fun getData() {
+        GlobalScope.launch {
+            transactions =
+                BaseApplication.database.transactionDao().getTopThreeTransaction() as ArrayList<Transaction>
+            transactionAdapter.submitList(transactions)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
+    override fun updateDate() {
+        getData()
     }
 }

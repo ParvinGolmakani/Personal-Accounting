@@ -10,4 +10,7 @@
     <color name="positiveColor">#0288D1</color>
     <color name="linkColor">#1976D2</color>
     <color name="negativeColor">#AFAFAF</color>
+
+    <color name="green">#34CE8D</color>
+    <color name="orange">#FFCAA1</color>
 </resources>

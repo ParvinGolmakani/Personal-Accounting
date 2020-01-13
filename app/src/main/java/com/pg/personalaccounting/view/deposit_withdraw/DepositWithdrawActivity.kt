@@ -5,6 +5,7 @@ import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseActivity
 import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.interfaces.AccountInterface
+import com.pg.personalaccounting.core.interfaces.UpdateDataInterface
 import com.pg.personalaccounting.core.models.Account
 import com.pg.personalaccounting.core.models.Transaction
 import com.pg.personalaccounting.view.account.AccountDialog
@@ -14,11 +15,16 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DepositWithdrawActivity : BaseActivity(R.layout.activity_deposit_withdraw), AccountInterface {
+class DepositWithdrawActivity() :
+    BaseActivity(R.layout.activity_deposit_withdraw), AccountInterface {
+
+    companion object {
+        lateinit var updateDataInterface: UpdateDataInterface
+    }
 
     private lateinit var bundle: Bundle
     private lateinit var account: Account
-    val accountDialog = AccountDialog(this)
+    private val accountDialog = AccountDialog(this)
     private var isDeposit: Boolean = false
     override fun afterLoadView() {
         initViews()
@@ -75,7 +81,9 @@ class DepositWithdrawActivity : BaseActivity(R.layout.activity_deposit_withdraw)
             BaseApplication.database.transactionDao().insertTransaction(transaction)
             withContext(Dispatchers.Main) {
                 showToast("Saved!")
+                updateDataInterface.updateDate()
                 onBackPressed()
+
             }
         }
     }

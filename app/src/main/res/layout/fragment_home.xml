@@ -23,7 +23,9 @@
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:dateTextAppearance="@style/CalenderViewDateCustomText"
+            android:weekDayTextAppearance="@style/CalenderViewWeekCustomText" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -68,8 +70,8 @@
             android:id="@+id/transactionsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="@dimen/normalPadding"
             android:layout_marginBottom="@dimen/_40sdp"
+            android:padding="@dimen/normalPadding"
             tools:listitem="@layout/item_transaction" />
 
     </LinearLayout>

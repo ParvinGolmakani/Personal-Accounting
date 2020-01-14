@@ -26,7 +26,19 @@
         <item name="onSelectedColor">#D6D6D6</item>
         <item name="positiveColor">@color/positiveColor</item>
         <item name="negativeColor">@color/negativeColor</item>
+    </style>
 
+    <!--    calender styles-->
+    <style name="CalenderViewCustom" parent="Theme.AppCompat">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">?textColor</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" parent="android:TextAppearance.DeviceDefault.Small">
+        <item name="android:textColor">@color/linkColor</item>
     </style>
 
     <!--    text styles-->

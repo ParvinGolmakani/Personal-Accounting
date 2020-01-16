@@ -4,6 +4,10 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/AccountList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 <TextView
     android:id="@+id/addAccountBtn"
     app:layout_constraintBottom_toBottomOf="parent"

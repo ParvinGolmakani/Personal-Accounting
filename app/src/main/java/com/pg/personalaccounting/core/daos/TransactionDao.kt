@@ -19,4 +19,7 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions ORDER BY id DESC LIMIT 3")
     fun getTopThreeTransaction(): List<Transaction>
+
+    @Query("SELECT * FROM transactions where transactions.`desc` like :word")
+    fun searchTransactions(word: String): List<Transaction>
 }

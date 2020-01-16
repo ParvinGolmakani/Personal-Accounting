@@ -33,4 +33,5 @@
     <string name="no_accounts_here">Sorry there is no accounts here</string>
     <string name="add_account">ADD ACCOUNT</string>
     <string name="last_3_transactions">Last 3 Transactions</string>
+    <string name="search">search</string>
 </resources>

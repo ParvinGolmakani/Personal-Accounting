@@ -2,6 +2,7 @@ package com.pg.personalaccounting.core.daos
 
 import androidx.room.*
 import com.pg.personalaccounting.core.models.Account
+import com.pg.personalaccounting.core.models.Transaction
 
 @Dao
 interface AccountDao {
@@ -19,4 +20,6 @@ interface AccountDao {
 
     @Query("select * from accounts where id=:id")
     fun getAccountById(id: Int): Account
+    @Query("SELECT * FROM accounts where accounts.`bankName` like :word")
+    fun searchAccount(word: String): List<Account>
 }

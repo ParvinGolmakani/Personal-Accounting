@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatEditText
+        android:singleLine="true"
         android:id="@+id/searchET"
         style="@style/TextNormal"
         android:layout_width="0dp"

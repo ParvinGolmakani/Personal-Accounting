@@ -69,7 +69,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="@dimen/normalPadding"
-            android:layout_marginBottom="@dimen/_40sdp"
             tools:listitem="@layout/item_transaction" />
 
     </LinearLayout>

@@ -1,7 +1,15 @@
 package com.pg.personalaccounting.view.report
 
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.pg.personalaccounting.R
+import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.bases.BaseFragment
+import com.pg.personalaccounting.core.models.Transaction
+import kotlinx.android.synthetic.main.fragment_report.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class ReportFragment : BaseFragment(R.layout.fragment_report) {
 
@@ -15,8 +23,32 @@ class ReportFragment : BaseFragment(R.layout.fragment_report) {
         }
     }
 
-    override fun afterLoadView() {
+    // init values
+    private val transactionAdapter = TransactionAdapter()
+    var list = ArrayList<Transaction>()
 
+    override fun afterLoadView() {
+        initRV()
     }
 
+    private fun initRV() {
+        transactionsRV.layoutManager = LinearLayoutManager(context)
+        transactionsRV.adapter = transactionAdapter
+    }
+
+    private fun getData() {
+        GlobalScope.launch {
+            list =
+                BaseApplication.database.transactionDao().getTransaction() as ArrayList<Transaction>
+
+            withContext(Dispatchers.Main) {
+                transactionAdapter.submitList(list)
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
 }

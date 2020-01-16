@@ -68,7 +68,6 @@ class MainActivity : BaseActivity(R.layout.activity_main),
 
     override fun onResume() {
         super.onResume()
-        val ft: FragmentTransaction = supportFragmentManager.beginTransaction()
         bottomNavigation.selectedItemId = R.id.navHome
     }
 }

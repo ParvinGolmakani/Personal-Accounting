@@ -1,7 +1,9 @@
 package com.pg.personalaccounting.view.account
 
+import android.content.Intent
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseFragment
+import kotlinx.android.synthetic.main.fragment_account.*
 
 class AccountFragment : BaseFragment(R.layout.fragment_account) {
 
@@ -16,7 +18,11 @@ class AccountFragment : BaseFragment(R.layout.fragment_account) {
     }
 
     override fun afterLoadView() {
+        addAccountBtn.setOnClickListener {
+            val intent = Intent(context, AddAccountActivity::class.java)
+            startActivity(intent)
 
+        }
     }
 
 }

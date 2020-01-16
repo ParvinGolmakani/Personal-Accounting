@@ -19,9 +19,20 @@
         android:gravity="center|start"
         android:hint="@string/search"
         android:padding="@dimen/normalPadding"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/filterIV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/filterIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normalPadding"
+        android:layout_marginRight="@dimen/normalPadding"
+        app:layout_constraintBottom_toBottomOf="@id/searchET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_filter" />
 
 
     <androidx.recyclerview.widget.RecyclerView

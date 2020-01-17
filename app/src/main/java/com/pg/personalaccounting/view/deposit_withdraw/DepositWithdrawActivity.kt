@@ -73,7 +73,6 @@ class DepositWithdrawActivity() :
     @SuppressLint("NewApi")
     private fun saveTransaction() {
         GlobalScope.launch {
-            //            val date = "${yearET.text}/${monthET.text}/${dayET.text}"
             val date = getStringDate(
                 yearET.text.toString(),
                 monthET.text.toString(),
@@ -88,13 +87,32 @@ class DepositWithdrawActivity() :
                 account.id,
                 isCheck.isChecked
             )
+
             BaseApplication.database.transactionDao().insertTransaction(transaction)
+
+            // set balance
+            saveBalance(transaction)
+
             withContext(Dispatchers.Main) {
                 showToast("Saved!")
                 updateDataInterface.updateDate()
                 onBackPressed()
 
             }
+        }
+    }
+
+    private fun saveBalance(transaction: Transaction) {
+        if (!isCheck.isChecked) {
+            var sign = 1
+            var account =
+                BaseApplication.database.accountDao().getAccountById(transaction.accountId)
+            if (!transaction.isDeposit) {
+                sign = -1
+            }
+            val amount = transaction.amount * sign
+            account.balance = account.balance + amount
+            BaseApplication.database.accountDao().updateAccount(account)
         }
     }
 }

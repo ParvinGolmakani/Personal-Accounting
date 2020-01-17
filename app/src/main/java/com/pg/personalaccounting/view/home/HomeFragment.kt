@@ -10,6 +10,7 @@ import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.bases.BaseFragment
 import com.pg.personalaccounting.core.interfaces.UpdateDataInterface
 import com.pg.personalaccounting.core.models.Transaction
+import com.pg.personalaccounting.core.utils.AppConstants
 import com.pg.personalaccounting.view.deposit_withdraw.DepositWithdrawActivity
 import com.pg.personalaccounting.view.report.TransactionAdapter
 import kotlinx.android.synthetic.main.fragment_home.*
@@ -83,12 +84,12 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         this.day = day
         this.month = month + 1
         this.year = year
-        selectedDateTV.text = "$year/${month + 1}/$day"
+        selectedDateTV.text = "${month + 1}/${day}/$year"
     }
 
     @SuppressLint("SimpleDateFormat")
     fun getTodayDate(): String {
-        val sdf = SimpleDateFormat("yyyy/MM/dd")
+        val sdf = SimpleDateFormat(AppConstants.dateFormat)
         val date = Date()
         day = date.day
         year = date.year

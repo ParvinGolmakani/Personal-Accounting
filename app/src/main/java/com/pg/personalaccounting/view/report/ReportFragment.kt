@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.bases.BaseFragment
+import com.pg.personalaccounting.core.interfaces.FilterInterface
 import com.pg.personalaccounting.core.models.Transaction
 import kotlinx.android.synthetic.main.fragment_report.*
 import kotlinx.coroutines.Dispatchers
@@ -12,7 +13,7 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class ReportFragment : BaseFragment(R.layout.fragment_report) {
+class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
 
     companion object {
         private var INSTANCE: BaseFragment? = null
@@ -28,8 +29,16 @@ class ReportFragment : BaseFragment(R.layout.fragment_report) {
     private val transactionAdapter = TransactionAdapter()
     var list = ArrayList<Transaction>()
 
+    lateinit var dialog: ReportFilterDialog
+
     override fun afterLoadView() {
         initRV()
+
+        // dialog
+        dialog = ReportFilterDialog(context!!, this)
+        filterIV.setOnClickListener {
+            dialog.show()
+        }
     }
 
     private fun initRV() {
@@ -55,6 +64,7 @@ class ReportFragment : BaseFragment(R.layout.fragment_report) {
         }
     }
 
+
     private fun search(word: String) {
         GlobalScope.launch {
             list =
@@ -69,5 +79,20 @@ class ReportFragment : BaseFragment(R.layout.fragment_report) {
     override fun onResume() {
         super.onResume()
         getData()
+    }
+
+    override fun getDates(from: Long, to: Long) {
+        GlobalScope.launch {
+            list =
+                BaseApplication.database.transactionDao().getTransactionByDates(
+                    from,
+                    to
+                ) as ArrayList<Transaction>
+
+            withContext(Dispatchers.Main) {
+                transactionAdapter.submitList(list)
+                showToast("Done!")
+            }
+        }
     }
 }

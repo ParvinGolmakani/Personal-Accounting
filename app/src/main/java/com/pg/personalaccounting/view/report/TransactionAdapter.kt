@@ -9,9 +9,8 @@ import com.pg.personalaccounting.core.bases.BaseAdapter
 import com.pg.personalaccounting.core.bases.BaseApplication
 import com.pg.personalaccounting.core.bases.BaseViewHolder
 import com.pg.personalaccounting.core.models.Transaction
-import kotlinx.android.synthetic.main.item_account.view.*
+import com.pg.personalaccounting.core.utils.longToDate
 import kotlinx.android.synthetic.main.item_transaction.view.*
-import kotlinx.android.synthetic.main.item_transaction.view.icon
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -89,7 +88,8 @@ class TransactionAdapter :
             GlobalScope.launch {
                 val account = BaseApplication.database.accountDao().getAccountById(id)
                 withContext(Dispatchers.Main) {
-                    itemView.bankDateTV.text = "${account.bankName} - ${transaction.tDate}"
+                    itemView.bankDateTV.text =
+                        "${account.bankName} - ${longToDate(transaction.tDate)}"
                     itemView.bankAccountNumber.text = account?.accNumber
                 }
             }

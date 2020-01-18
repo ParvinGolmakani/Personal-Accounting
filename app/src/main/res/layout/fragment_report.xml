@@ -1,6 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-</LinearLayout>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:singleLine="true"
+        android:id="@+id/searchET"
+        style="@style/TextNormal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/normalPadding"
+        android:layout_marginTop="@dimen/normalPadding"
+        android:layout_marginEnd="@dimen/normalPadding"
+        android:background="@drawable/bg_edit_text"
+        android:drawableStart="@drawable/ic_search"
+        android:drawableLeft="@drawable/ic_search"
+        android:gravity="center|start"
+        android:hint="@string/search"
+        android:padding="@dimen/normalPadding"
+        app:layout_constraintEnd_toStartOf="@id/filterIV"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/filterIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/normalPadding"
+        android:layout_marginRight="@dimen/normalPadding"
+        app:layout_constraintBottom_toBottomOf="@id/searchET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_filter" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/transactionsRV"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/normalPadding"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchET" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

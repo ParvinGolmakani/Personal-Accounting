@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Transaction(
     @PrimaryKey(autoGenerate = true) val id: Int, val isDeposit: Boolean,
     val amount: Float,
-    val tDate: String,
+    val tDate: Long,
     val desc: String,
     val accountId: Int,
     val isCash: Boolean

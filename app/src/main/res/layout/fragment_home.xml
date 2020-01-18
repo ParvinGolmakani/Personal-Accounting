@@ -70,7 +70,6 @@
             android:id="@+id/transactionsRV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_40sdp"
             android:padding="@dimen/normalPadding"
             tools:listitem="@layout/item_transaction" />
 

@@ -1,5 +1,6 @@
 package com.pg.personalaccounting.view.deposit_withdraw
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseActivity
@@ -8,8 +9,11 @@ import com.pg.personalaccounting.core.interfaces.AccountInterface
 import com.pg.personalaccounting.core.interfaces.UpdateDataInterface
 import com.pg.personalaccounting.core.models.Account
 import com.pg.personalaccounting.core.models.Transaction
+import com.pg.personalaccounting.core.utils.dateToLong
+import com.pg.personalaccounting.core.utils.getStringDate
 import com.pg.personalaccounting.view.account.AccountDialog
 import kotlinx.android.synthetic.main.activity_deposit_withdraw.*
+import kotlinx.android.synthetic.main.layout_date.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -66,25 +70,49 @@ class DepositWithdrawActivity() :
         accountDialog.dismiss()
     }
 
+    @SuppressLint("NewApi")
     private fun saveTransaction() {
         GlobalScope.launch {
-            val date = "${yearET.text}/${monthET.text}/${dayET.text}"
+            val date = getStringDate(
+                yearET.text.toString(),
+                monthET.text.toString(),
+                dayET.text.toString()
+            )
             val transaction = Transaction(
                 0,
                 isDeposit,
                 amountET.rawValue.toFloat(),
-                date,
+                dateToLong(date),
                 descET.text.toString(),
                 account.id,
                 isCheck.isChecked
             )
+
             BaseApplication.database.transactionDao().insertTransaction(transaction)
+
+            // set balance
+            saveBalance(transaction)
+
             withContext(Dispatchers.Main) {
                 showToast("Saved!")
                 updateDataInterface.updateDate()
                 onBackPressed()
 
             }
+        }
+    }
+
+    private fun saveBalance(transaction: Transaction) {
+        if (!isCheck.isChecked) {
+            var sign = 1
+            var account =
+                BaseApplication.database.accountDao().getAccountById(transaction.accountId)
+            if (!transaction.isDeposit) {
+                sign = -1
+            }
+            val amount = transaction.amount * sign
+            account.balance = account.balance + amount
+            BaseApplication.database.accountDao().updateAccount(account)
         }
     }
 }

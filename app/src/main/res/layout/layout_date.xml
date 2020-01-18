@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_140sdp"
+    android:layout_height="@dimen/_30sdp"
+    android:background="@drawable/bg_edit_text"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/monthET"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="MM"
+        android:inputType="numberDecimal"
+        android:maxLength="2"
+        android:text=""
+        android:textColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash" />
+
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/dayET"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="DD"
+        android:inputType="numberDecimal"
+        android:maxLength="2"
+        android:text=""
+        android:textColor="@color/black" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        style="@style/TextBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/slash" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/yearET"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:hint="YYYY"
+        android:inputType="numberDecimal"
+        android:maxLength="4"
+        android:text=""
+        android:textColor="@color/black" />
+
+
+</LinearLayout>

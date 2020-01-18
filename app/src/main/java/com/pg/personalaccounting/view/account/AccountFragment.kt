@@ -1,6 +1,7 @@
 package com.pg.personalaccounting.view.account
 
 import android.content.Intent
+import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseApplication
@@ -48,6 +49,12 @@ class AccountFragment : BaseFragment(R.layout.fragment_account),AccountInterface
 private fun initRV() {
     AccountList.layoutManager = LinearLayoutManager(context)
     AccountList.adapter = accountAdapter
+    searchAc.addTextChangedListener {
+        if (it!!.isNotEmpty())
+            search(it.toString())
+        else
+            getData()
+    }
 }
 
 private fun getData() {
@@ -60,6 +67,16 @@ private fun getData() {
         }
     }
 }
+    private fun search(word: String) {
+        GlobalScope.launch {
+            list =
+                    BaseApplication.database.accountDao().searchAccount(word) as ArrayList<Account>
+
+            withContext(Dispatchers.Main) {
+               accountAdapter.submitList(list)
+            }
+        }
+    }
 
 override fun onResume() {
     super.onResume()

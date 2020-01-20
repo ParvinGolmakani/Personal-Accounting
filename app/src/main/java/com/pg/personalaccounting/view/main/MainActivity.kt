@@ -16,8 +16,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(R.layout.activity_main),
     BottomNavigationView.OnNavigationItemSelectedListener {
 
-    var activeFragment = HomeFragment.getInstance()
-
+    private var activeFragment = HomeFragment.getInstance()
     override fun afterLoadView() {
         initBottomNavigation()
         bottomNavigation.selectedItemId = R.id.navHome

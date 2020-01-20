@@ -8,4 +8,6 @@
     <attr name="positiveColor" format="color" />
     <attr name="negativeColor" format="color" />
     <attr name="cardItemBackground" format="color" />
+    <attr name="editTextBackgroundColor" format="color" />
+    <attr name="iconTintColor" format="color" />
 </resources>

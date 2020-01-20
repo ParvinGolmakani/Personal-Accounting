@@ -23,6 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/normalPadding"
+            android:tint="?iconTintColor"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_account_bank_black_24dp" />
@@ -58,6 +59,7 @@
             android:layout_marginTop="@dimen/_4sdp"
             android:drawableLeft="@drawable/ic_dollar"
             android:gravity="center"
+            android:tint="?iconTintColor"
             android:padding="@dimen/normalPadding"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

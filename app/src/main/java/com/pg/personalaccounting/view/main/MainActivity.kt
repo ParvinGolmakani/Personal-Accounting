@@ -20,6 +20,7 @@ class MainActivity : BaseActivity(R.layout.activity_main),
 
     override fun afterLoadView() {
         initBottomNavigation()
+        bottomNavigation.selectedItemId = R.id.navHome
     }
 
     private fun initBottomNavigation() {
@@ -68,6 +69,5 @@ class MainActivity : BaseActivity(R.layout.activity_main),
 
     override fun onResume() {
         super.onResume()
-        bottomNavigation.selectedItemId = R.id.navHome
     }
 }

@@ -37,6 +37,7 @@ dependencies {
     def sdp_version = "1.0.6"
     def currency_edit_text_version = "2.0.2"
     def circle_image_view_version = "3.0.1"
+    def ted_permission_version = "2.2.3"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -70,6 +71,10 @@ dependencies {
     // scale lib
     implementation "com.intuit.sdp:sdp-android:$sdp_version"
     implementation "com.intuit.ssp:ssp-android:$sdp_version"
+
+    // permission checker
+    implementation "gun0912.ted:tedpermission:$ted_permission_version"
+
 
     // coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"

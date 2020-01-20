@@ -8,16 +8,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingTop="@dimen/_30sdp">
 
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileIV"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_50sdp"
-            android:paddingLeft="@dimen/_20sdp"
-           android:src="@drawable/ic_launcher_background" />
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:src="@drawable/ic_launcher_background" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/nameTV"
@@ -63,13 +64,13 @@
         android:paddingTop="@dimen/_25sdp">
 
         <LinearLayout
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -89,14 +90,14 @@
 
 
         <LinearLayout
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:paddingTop="@dimen/_15sdp"
-            android:gravity="center_vertical">
+            android:paddingTop="@dimen/_15sdp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="wrap_content"
@@ -118,24 +119,22 @@
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:background="@drawable/button_bg"
                 android:text="@string/drak"
-                android:textColor="#ffffff">
-            </Button>
+                android:textColor="#ffffff"></Button>
         </LinearLayout>
 
 
-
-
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/aboutUs"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/_15sdp"
-        android:gravity="center_vertical">
+        android:paddingTop="@dimen/_15sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -155,14 +154,14 @@
 
     <LinearLayout
         android:id="@+id/contactUs"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/_15sdp"
-        android:gravity="center_vertical">
+        android:paddingTop="@dimen/_15sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"
@@ -182,14 +181,14 @@
 
     <LinearLayout
         android:id="@+id/share"
-        android:clickable="true"
-        android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingTop="@dimen/_15sdp"
-        android:gravity="center_vertical">
+        android:paddingTop="@dimen/_15sdp">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="wrap_content"

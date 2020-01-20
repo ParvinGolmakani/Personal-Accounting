@@ -75,6 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/_20sdp"
+                android:tint="?iconTintColor"
                 app:srcCompat="@drawable/ic_lock_outline_black_24dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -102,6 +103,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/_20sdp"
+                android:tint="?iconTintColor"
                 app:srcCompat="@drawable/ic_wb_sunny_black_24dp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -141,6 +143,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/_20sdp"
+            android:tint="?iconTintColor"
             app:srcCompat="@drawable/ic_info_outline_black_24dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -168,6 +171,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/_20sdp"
+            android:tint="?iconTintColor"
             app:srcCompat="@drawable/ic_phone_black_24dp" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -195,6 +199,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/_20sdp"
+            android:tint="?iconTintColor"
             app:srcCompat="@drawable/ic_share_black_24dp" />
 
         <androidx.appcompat.widget.AppCompatTextView

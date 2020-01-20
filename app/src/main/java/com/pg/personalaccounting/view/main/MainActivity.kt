@@ -16,10 +16,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity(R.layout.activity_main),
     BottomNavigationView.OnNavigationItemSelectedListener {
 
-    var activeFragment = HomeFragment.getInstance()
-
+    private var activeFragment = HomeFragment.getInstance()
     override fun afterLoadView() {
         initBottomNavigation()
+        bottomNavigation.selectedItemId = R.id.navHome
     }
 
     private fun initBottomNavigation() {
@@ -68,6 +68,5 @@ class MainActivity : BaseActivity(R.layout.activity_main),
 
     override fun onResume() {
         super.onResume()
-        bottomNavigation.selectedItemId = R.id.navHome
     }
 }

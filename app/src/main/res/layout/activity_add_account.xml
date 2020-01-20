@@ -35,6 +35,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_back"
                     tools:ignore="VectorDrawableCompat" />
 
@@ -88,7 +89,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_account_bank_black_24dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -123,6 +124,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_type_black_24dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -157,6 +159,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_number_card_black_24dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -192,6 +195,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_date_range_black_24dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -269,6 +273,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_account_balance_wallet_black_24dp" />
 
                 <androidx.appcompat.widget.AppCompatTextView

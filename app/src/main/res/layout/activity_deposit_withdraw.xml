@@ -41,6 +41,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/normalPadding"
+                    android:tint="?iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
@@ -96,7 +97,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
-                    android:tint="?textColor"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_dollar" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -129,7 +130,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
-                    android:tint="?textColor"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_description" />
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -162,7 +163,7 @@
                 <androidx.appcompat.widget.AppCompatImageView
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="wrap_content"
-                    android:tint="?textColor"
+                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_credit_card" />
 
                 <androidx.appcompat.widget.AppCompatTextView

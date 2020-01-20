@@ -13,6 +13,8 @@
         <item name="onUnSelectedColor">#666666</item>
         <item name="positiveColor">@color/positiveColor</item>
         <item name="negativeColor">@color/negativeColor</item>
+        <item name="editTextBackground">@color/lightGrey</item>
+        <item name="iconTintColor">@color/md_grey_600</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -26,6 +28,9 @@
         <item name="onSelectedColor">#D6D6D6</item>
         <item name="positiveColor">@color/positiveColor</item>
         <item name="negativeColor">@color/negativeColor</item>
+        <item name="editTextBackground">@color/lightGrey</item>
+        <item name="iconTintColor">@color/md_grey_600</item>
+
     </style>
 
     <!--    calender styles-->

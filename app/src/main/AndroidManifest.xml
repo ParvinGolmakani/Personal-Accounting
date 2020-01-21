@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pg.personalaccounting">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:name=".core.bases.BaseApplication"
         android:allowBackup="true"
@@ -12,7 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/LightTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".view.account.AddAccountActivity" android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.account.AddAccountActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".view.deposit_withdraw.DepositWithdrawActivity"
             android:windowSoftInputMode="stateHidden" />

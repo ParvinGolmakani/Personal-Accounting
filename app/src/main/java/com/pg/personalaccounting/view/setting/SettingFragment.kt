@@ -38,7 +38,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
 
     override fun afterLoadView() {
         editName()
-
+        loadImage()
         // On click events
         mView.share.setOnClickListener {
             shareApp()
@@ -58,6 +58,9 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
             dialog.show()
 
         }
+        mView.profileIV.setOnClickListener {
+            imageOpenHandler()
+        }
     }
 
     private fun editName() {
@@ -69,7 +72,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
             action = Intent.ACTION_SEND
             putExtra(
                 Intent.EXTRA_TEXT,
-                "I use the Personal Accountant app and I suggest you to use it too"
+                "I use the Personal Account app and I suggest you use it too"
             )
             type = "text/plain"
         }
@@ -118,13 +121,20 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
             .check()
     }
 
-    fun loadImage(imageUri: Uri) {
-        val bitmapImage =
-            MediaStore.Images.Media.getBitmap(activity!!.contentResolver, imageUri)
-        profileIV.setImageBitmap(bitmapImage)
+    private fun loadImage() {
+        val bitmap = AppPreferences.getImage()
+        if (bitmap != null) {
+            try {
+                profileIV.setImageBitmap(AppPreferences.getImage())
+            } catch (e: Exception) {
+            }
+        } else {
+            profileIV.setImageResource(R.drawable.user)
+        }
     }
 
-    fun openImageSelector() {
+
+    private fun openImageSelector() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, AppConstants.PICK_PHOTO_FOR_AVATAR)
@@ -135,8 +145,9 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
         if (resultCode == RESULT_OK) {
             if (requestCode == AppConstants.PICK_PHOTO_FOR_AVATAR) {
                 val returnUri: Uri = data?.data!!
-                loadImage(returnUri)
-
+                val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, returnUri)
+                AppPreferences.saveImage(bitmap)
+                loadImage()
             }
 
         }

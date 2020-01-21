@@ -108,14 +108,16 @@
                     android:text="@string/amount" />
 
 
-                <com.blackcat.currencyedittext.CurrencyEditText
+                <me.abhinay.input.CurrencyEditText
                     android:id="@+id/amountET"
                     style="@style/TextBig"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/bigPadding"
                     android:layout_marginLeft="@dimen/bigPadding"
-                    android:padding="@dimen/normalPadding" />
+                    android:inputType="number"
+                    android:padding="@dimen/normalPadding"
+                    android:text="0" />
             </LinearLayout>
 
 

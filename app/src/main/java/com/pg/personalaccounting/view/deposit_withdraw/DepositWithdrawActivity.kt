@@ -81,7 +81,7 @@ class DepositWithdrawActivity() :
             val transaction = Transaction(
                 0,
                 isDeposit,
-                amountET.rawValue.toFloat(),
+                amountET.cleanDoubleValue,
                 dateToLong(date),
                 descET.text.toString(),
                 account.id,
@@ -111,7 +111,7 @@ class DepositWithdrawActivity() :
                 sign = -1
             }
             val amount = transaction.amount * sign
-            account.balance = account.balance + amount
+            account.balance = (account.balance + amount).toFloat()
             BaseApplication.database.accountDao().updateAccount(account)
         }
     }

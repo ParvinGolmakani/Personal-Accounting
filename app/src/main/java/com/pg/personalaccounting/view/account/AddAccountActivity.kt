@@ -16,6 +16,7 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
         buttonSaveAcc.setOnClickListener {
             saveAccount()
         }
+        back.setOnClickListener { onBackPressed() }
     }
 
     private fun saveAccount() {

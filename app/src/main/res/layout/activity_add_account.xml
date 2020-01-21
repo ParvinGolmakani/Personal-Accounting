@@ -29,13 +29,14 @@
                 android:layout_height="match_parent">
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="@dimen/normalPadding"
+                    android:tint="?iconTintColor"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    android:tint="?iconTintColor"
                     app:srcCompat="@drawable/ic_back"
                     tools:ignore="VectorDrawableCompat" />
 
@@ -286,7 +287,7 @@
 
             </LinearLayout>
 
-            <EditText
+            <me.abhinay.input.CurrencyEditText
                 android:id="@+id/balance"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"

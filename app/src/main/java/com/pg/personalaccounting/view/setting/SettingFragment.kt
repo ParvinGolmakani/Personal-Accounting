@@ -39,6 +39,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     override fun afterLoadView() {
         editName()
         loadImage()
+        setThemeName()
         // On click events
         mView.share.setOnClickListener {
             shareApp()
@@ -60,6 +61,14 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
         }
         mView.profileIV.setOnClickListener {
             imageOpenHandler()
+        }
+    }
+
+    private fun setThemeName() {
+        if (AppPreferences.getTheme() == R.style.DarkTheme) {
+            themeButton.text = "Light"
+        } else {
+            themeButton.text = "Dark"
         }
     }
 

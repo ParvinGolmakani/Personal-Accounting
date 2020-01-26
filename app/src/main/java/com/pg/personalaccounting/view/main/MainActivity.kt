@@ -66,7 +66,11 @@ class MainActivity : BaseActivity(R.layout.activity_main),
         activeFragment = fragment
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onBackPressed() {
+        if (activeFragment == HomeFragment.getInstance()) {
+            super.onBackPressed()
+        } else {
+            bottomNavigation.selectedItemId = R.id.navHome
+        }
     }
 }

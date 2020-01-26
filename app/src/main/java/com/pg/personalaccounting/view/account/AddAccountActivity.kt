@@ -20,21 +20,33 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
     }
 
     private fun saveAccount() {
-        GlobalScope.launch {
-            val account = Account(
-                0,
-                accType.text.toString(),
-                accNum.text.toString(),
-                "$yearET-$monthET-$dayET",
-                balance.text.toString().toFloat()
-                ,
-                bankName.text.toString()
-            )
-            BaseApplication.database.accountDao().insertAccount(account)
-            withContext(Dispatchers.Main) {
-                showToast("Account Saved")
-                onBackPressed()
+
+        if (accType.text.toString().isNotEmpty() and accNum.text.toString().isNotEmpty() and balance.text.toString().isNotEmpty()) {
+            try {
+
+
+                GlobalScope.launch {
+                    val account = Account(
+                        0,
+                        accType.text.toString(),
+                        accNum.text.toString(),
+                        "$yearET-$monthET-$dayET",
+                        balance.cleanDoubleValue
+                        ,
+                        bankName.text.toString()
+                    )
+                    BaseApplication.database.accountDao().insertAccount(account)
+                    withContext(Dispatchers.Main) {
+                        showToast("Account Saved")
+                        onBackPressed()
+                    }
+                }
+            } catch (e: Exception) {
+                showToast("Entered data in incorrect")
             }
+        } else {
+            showToast("Please fill all fields")
         }
+
     }
 }

@@ -72,34 +72,43 @@ class DepositWithdrawActivity() :
 
     @SuppressLint("NewApi")
     private fun saveTransaction() {
-        GlobalScope.launch {
-            val date = getStringDate(
-                yearET.text.toString(),
-                monthET.text.toString(),
-                dayET.text.toString()
-            )
-            val transaction = Transaction(
-                0,
-                isDeposit,
-                amountET.cleanDoubleValue,
-                dateToLong(date),
-                descET.text.toString(),
-                account.id,
-                isCheck.isChecked
-            )
+        if (amountET.text.toString().isNotEmpty()) {
+            if (account.id != 0) {
+                GlobalScope.launch {
+                    val date = getStringDate(
+                        yearET.text.toString(),
+                        monthET.text.toString(),
+                        dayET.text.toString()
+                    )
+                    val transaction = Transaction(
+                        0,
+                        isDeposit,
+                        amountET.cleanDoubleValue,
+                        dateToLong(date),
+                        descET.text.toString(),
+                        account.id,
+                        isCheck.isChecked
+                    )
 
-            BaseApplication.database.transactionDao().insertTransaction(transaction)
+                    BaseApplication.database.transactionDao().insertTransaction(transaction)
 
-            // set balance
-            saveBalance(transaction)
+                    // set balance
+                    saveBalance(transaction)
 
-            withContext(Dispatchers.Main) {
-                showToast("Saved!")
-                updateDataInterface.updateDate()
-                onBackPressed()
+                    withContext(Dispatchers.Main) {
+                        showToast("Saved!")
+                        updateDataInterface.updateDate()
+                        onBackPressed()
 
+                    }
+                }
+            } else {
+                showToast("Insert Account")
             }
+        } else {
+            showToast("Please fill all fields")
         }
+
     }
 
     private fun saveBalance(transaction: Transaction) {
@@ -111,7 +120,7 @@ class DepositWithdrawActivity() :
                 sign = -1
             }
             val amount = transaction.amount * sign
-            account.balance = (account.balance + amount).toFloat()
+            account.balance = (account.balance + amount)
             BaseApplication.database.accountDao().updateAccount(account)
         }
     }

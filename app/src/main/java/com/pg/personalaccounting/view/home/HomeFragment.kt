@@ -20,6 +20,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
+
 class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateChangeListener,
     UpdateDataInterface {
 
@@ -89,11 +90,18 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
 
     @SuppressLint("SimpleDateFormat")
     fun getTodayDate(): String {
+        val c = Calendar.getInstance().time
+
         val sdf = SimpleDateFormat(AppConstants.dateFormat)
-        val date = Date()
-        day = date.day
-        year = date.year
-        month = date.month + 1
+        val formattedDate = sdf.format(c)
+
+        // split date to month day year
+        val str = formattedDate.split("/")
+
+        day = str[1].toInt()
+        year = str[2].toInt()
+        month = str[0].toInt()
+
         return sdf.format(Date())
     }
 

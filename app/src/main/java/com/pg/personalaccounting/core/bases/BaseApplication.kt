@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.Application
 import android.content.SharedPreferences
 import com.pg.personalaccounting.R
+import com.tomergoldst.timekeeper.core.TimeKeeper
 
 class BaseApplication : Application() {
     companion object {
@@ -19,6 +20,8 @@ class BaseApplication : Application() {
         preferences = provideSharedPreferences()
         preferencesEditor = preferences.edit()
         database = AppDataBase.getDatabase(this)
+        TimeKeeper.initialize(this);
+
     }
 
     private fun provideSharedPreferences(): SharedPreferences {

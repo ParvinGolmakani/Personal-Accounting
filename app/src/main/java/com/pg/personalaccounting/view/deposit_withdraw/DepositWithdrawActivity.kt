@@ -12,12 +12,15 @@ import com.pg.personalaccounting.core.models.Transaction
 import com.pg.personalaccounting.core.utils.dateToLong
 import com.pg.personalaccounting.core.utils.getStringDate
 import com.pg.personalaccounting.view.account.AccountDialog
+import com.tomergoldst.timekeeper.core.TimeKeeper
+import com.tomergoldst.timekeeper.model.Alarm
 import kotlinx.android.synthetic.main.activity_deposit_withdraw.*
 import kotlinx.android.synthetic.main.layout_date.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
 
 class DepositWithdrawActivity() :
     BaseActivity(R.layout.activity_deposit_withdraw), AccountInterface {
@@ -26,6 +29,7 @@ class DepositWithdrawActivity() :
         lateinit var updateDataInterface: UpdateDataInterface
     }
 
+    private var isAccountSelected = false
     private lateinit var bundle: Bundle
     private lateinit var account: Account
     private val accountDialog = AccountDialog(this)
@@ -68,12 +72,13 @@ class DepositWithdrawActivity() :
         selectAccount.text = account.bankName
         this.account = account
         accountDialog.dismiss()
+        isAccountSelected = true
     }
 
     @SuppressLint("NewApi")
     private fun saveTransaction() {
         if (amountET.text.toString().isNotEmpty()) {
-            if (account.id != 0) {
+            if (isAccountSelected) {
                 GlobalScope.launch {
                     val date = getStringDate(
                         yearET.text.toString(),
@@ -87,7 +92,7 @@ class DepositWithdrawActivity() :
                         dateToLong(date),
                         descET.text.toString(),
                         account.id,
-                        isCheck.isChecked
+                        !isCheck.isChecked
                     )
 
                     BaseApplication.database.transactionDao().insertTransaction(transaction)
@@ -96,6 +101,9 @@ class DepositWithdrawActivity() :
                     saveBalance(transaction)
 
                     withContext(Dispatchers.Main) {
+                        if (!transaction.isCash) {
+                            setAlarm(transaction)
+                        }
                         showToast("Saved!")
                         updateDataInterface.updateDate()
                         onBackPressed()
@@ -123,5 +131,11 @@ class DepositWithdrawActivity() :
             account.balance = (account.balance + amount)
             BaseApplication.database.accountDao().updateAccount(account)
         }
+    }
+
+    private fun setAlarm(transaction: Transaction) {
+        val alarm = Alarm("account", transaction.tDate)
+        alarm.payload = "salam"
+        TimeKeeper.setAlarm(alarm)
     }
 }

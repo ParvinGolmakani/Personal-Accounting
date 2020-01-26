@@ -4,6 +4,8 @@
     package="com.pg.personalaccounting">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:name=".core.bases.BaseApplication"
@@ -14,6 +16,15 @@
         android:supportsRtl="true"
         android:theme="@style/LightTheme"
         tools:ignore="GoogleAppIndexingWarning">
+
+        <receiver
+            android:name=".core.services.AlarmReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.tomergoldst.timekeeper.intent_action.RECEIVE_ALARMS" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".view.account.AddAccountActivity"
             android:windowSoftInputMode="stateHidden" />

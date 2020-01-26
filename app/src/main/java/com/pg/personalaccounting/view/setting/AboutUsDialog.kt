@@ -7,7 +7,7 @@ import com.pg.personalaccounting.core.bases.BaseDialog
 class AboutUsDialog(context: Context) : BaseDialog(context, R.layout.dialog_about_us) {
     override fun afterLoadView() {
 
-    dismiss()
+        dismiss()
     }
 
 }

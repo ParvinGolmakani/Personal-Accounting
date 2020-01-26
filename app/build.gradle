@@ -58,6 +58,10 @@ dependencies {
     // dollar edit text
     implementation "me.abhinay.input:currency-edittext:$currency_edit_text_version"
 
+    implementation 'com.tomergoldst.android:timekeeper:1.0.2'
+    implementation 'com.firebase:firebase-jobdispatcher:0.8.5'
+
+
 //    //picasso
 //    implementation 'com.squareup.picasso:picasso:2.5.2'
 

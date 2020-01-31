@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/_25sdp"
 
-            android:text="parvin golmakani" />
+            android:text="@string/your_name" />
 
 
     </LinearLayout>
@@ -61,34 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="@dimen/_25sdp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?android:attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/_20sdp"
-                android:tint="?iconTintColor"
-                app:srcCompat="@drawable/ic_lock_outline_black_24dp" />
-
-            <androidx.appcompat.widget.AppCompatTextView
-                style="@style/TextNormal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/_10sdp"
-                android:text="@string/Password" />
-
-
-        </LinearLayout>
-
+        >
 
         <LinearLayout
             android:layout_width="match_parent"

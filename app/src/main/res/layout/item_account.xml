@@ -1,71 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<!--<androidx.cardview.widget.CardView -->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:layout_marginTop="@dimen/normalPadding"-->
+<!--    android:background="?cardItemBackground"-->
+<!--    android:orientation="vertical"-->
+<!--    app:cardCornerRadius="@dimen/_4sdp"-->
+<!--    app:cardUseCompatPadding="true"-->
+<!--    app:layout_constraintBottom_toBottomOf="parent"-->
+<!--    app:layout_constraintStart_toStartOf="parent"-->
+<!--    app:layout_constraintTop_toTopOf="parent"-->
+
+<!--    >-->
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/normalPadding"
-    android:background="?cardItemBackground"
-    android:orientation="vertical"
-    app:cardCornerRadius="@dimen/_4sdp"
-    app:cardUseCompatPadding="true">
+    android:layout_height="@dimen/_100sdp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:padding="@dimen/normalPadding">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:id="@+id/mainLayout"
-        android:layout_height="match_parent"
-        android:background="?android:attr/selectableItemBackground"
-        android:clickable="true"
-        android:focusable="true"
-        android:padding="@dimen/normalPadding">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:padding="@dimen/normalPadding"
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/normalPadding"
-            android:tint="?iconTintColor"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_account_bank_black_24dp" />
+        app:layout_constraintBottom_toBottomOf="@id/mainLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_account" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/bankNameTV"
-            style="@style/TextNormal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/account"
-            app:layout_constraintBottom_toBottomOf="@id/icon"
-            app:layout_constraintStart_toEndOf="@id/icon"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:paddingBottom="@dimen/_10sdp"
+        android:id="@+id/bankNameTV"
+        style="@style/TextBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/account"
+        app:layout_constraintBottom_toBottomOf="@id/icon"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/accountNumberTV"
-            style="@style/TextNormal"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="end"
-            android:padding="@dimen/normalPadding"
-            android:text="600404040404040440404"
-            app:layout_constraintBottom_toBottomOf="@id/icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/bankNameTV"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/accountNumberTV"
+        style="@style/TextNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/balanceTV"
-            style="@style/TextBig"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_4sdp"
-            android:drawableLeft="@drawable/ic_dollar"
-            android:gravity="center"
-            android:tint="?iconTintColor"
-            android:padding="@dimen/normalPadding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/icon" />
+        android:text="6004040400440404"
+        app:layout_constraintBottom_toBottomOf="@id/mainLayout"
+        app:layout_constraintLeft_toLeftOf="@id/bankNameTV"
+        app:layout_constraintStart_toEndOf="@id/icon"
+        app:layout_constraintTop_toTopOf="@id/bankNameTV" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/balanceTV"
+        style="@style/TextBig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:gravity="center"
+        android:padding="@dimen/normalPadding"
+        android:tint="?iconTintColor"
+        app:layout_constraintBottom_toBottomOf="@id/mainLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/mainLayout" />
 
-</androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--</androidx.cardview.widget.CardView>-->

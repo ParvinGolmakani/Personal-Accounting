@@ -38,4 +38,9 @@
     <string name="to">TO :</string>
     <string name="filter">FILTER</string>
     <string name="date_filtering">Date filtering :</string>
+    <string name="this_is_about_me">THIS iS ABOUT ME:</string>
+    <string name="my_name_is">My name is ......</string>
+    <string name="ok">OK</string>
+    <string name="your_name">your name</string>
+    <string name="enter_your_name">Enter your name</string>
 </resources>

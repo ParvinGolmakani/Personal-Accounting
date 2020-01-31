@@ -10,4 +10,5 @@
     <attr name="cardItemBackground" format="color" />
     <attr name="editTextBackgroundColor" format="color" />
     <attr name="iconTintColor" format="color" />
+    <attr name="lineColor" format="color" />
 </resources>

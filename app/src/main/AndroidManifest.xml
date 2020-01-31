@@ -26,6 +26,12 @@
         </receiver>
 
         <activity
+            android:name=".view.account.EditAccount"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".view.alarm.AlarmDialog"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
             android:name=".view.account.AddAccountActivity"
             android:windowSoftInputMode="stateHidden" />
         <activity

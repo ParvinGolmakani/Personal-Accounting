@@ -15,6 +15,7 @@
         <item name="negativeColor">@color/negativeColor</item>
         <item name="editTextBackground">@color/lightGrey</item>
         <item name="iconTintColor">@color/md_grey_600</item>
+        <item name="lineColor">@color/md_grey_200</item>
     </style>
 
     <style name="DarkTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -30,6 +31,8 @@
         <item name="negativeColor">@color/negativeColor</item>
         <item name="editTextBackground">@color/lightGrey</item>
         <item name="iconTintColor">@color/md_grey_600</item>
+        <item name="lineColor">@color/md_grey_700</item>
+
 
     </style>
 

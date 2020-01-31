@@ -6,7 +6,6 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:singleLine="true"
         android:id="@+id/searchET"
         style="@style/TextNormal"
         android:layout_width="0dp"
@@ -20,6 +19,8 @@
         android:gravity="center|start"
         android:hint="@string/search"
         android:padding="@dimen/normalPadding"
+        android:singleLine="true"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@id/filterIV"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,6 +31,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/normalPadding"
         android:layout_marginRight="@dimen/normalPadding"
+        android:tint="?textColor"
         app:layout_constraintBottom_toBottomOf="@id/searchET"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

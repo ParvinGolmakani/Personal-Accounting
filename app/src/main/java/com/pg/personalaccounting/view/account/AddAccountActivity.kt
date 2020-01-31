@@ -23,8 +23,6 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
 
         if (accType.text.toString().isNotEmpty() and accNum.text.toString().isNotEmpty() and balance.text.toString().isNotEmpty()) {
             try {
-
-
                 GlobalScope.launch {
                     val account = Account(
                         0,

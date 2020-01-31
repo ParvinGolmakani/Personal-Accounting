@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?backgroundColor"
     android:orientation="vertical">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -226,10 +227,10 @@
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/TextBig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash" />
+                    android:text="@string/slash"
+                    android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/monthET"
@@ -243,10 +244,10 @@
                     android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    style="@style/TextBig"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/slash" />
+                    android:text="@string/slash"
+                    android:textColor="@color/black" />
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/dayET"

@@ -2,6 +2,7 @@ package com.pg.personalaccounting.view.deposit_withdraw
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import com.google.gson.Gson
 import com.pg.personalaccounting.R
 import com.pg.personalaccounting.core.bases.BaseActivity
 import com.pg.personalaccounting.core.bases.BaseApplication
@@ -55,6 +56,7 @@ class DepositWithdrawActivity() :
 
         // confirm button
         confirm.setOnClickListener {
+
             saveTransaction()
         }
         back.setOnClickListener { onBackPressed() }
@@ -95,24 +97,28 @@ class DepositWithdrawActivity() :
                         !isCheck.isChecked
                     )
 
-                    BaseApplication.database.transactionDao().insertTransaction(transaction)
-
-                    // set balance
-                    saveBalance(transaction)
+                    if (transaction.isCash) {
+                        BaseApplication.database.transactionDao().insertTransaction(transaction)
+                        // set balance
+                        saveBalance(transaction)
+                    } else {
+                        setAlarm(transaction)
+                    }
 
                     withContext(Dispatchers.Main) {
-                        if (!transaction.isCash) {
-                            setAlarm(transaction)
-                        }
                         showToast("Saved!")
+                        if (isCheck.isChecked) {
+                            showToast("Alarm has been set")
+                        }
                         updateDataInterface.updateDate()
                         onBackPressed()
-
                     }
                 }
+
             } else {
                 showToast("Insert Account")
             }
+
         } else {
             showToast("Please fill all fields")
         }
@@ -135,7 +141,7 @@ class DepositWithdrawActivity() :
 
     private fun setAlarm(transaction: Transaction) {
         val alarm = Alarm("account", transaction.tDate)
-        alarm.payload = "salam"
+        alarm.payload = Gson().toJson(transaction)
         TimeKeeper.setAlarm(alarm)
     }
 }

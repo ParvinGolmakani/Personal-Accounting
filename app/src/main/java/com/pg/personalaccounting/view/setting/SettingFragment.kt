@@ -18,6 +18,10 @@ import com.pg.personalaccounting.core.utils.AppConstants
 import com.pg.personalaccounting.core.utils.AppPreferences
 import kotlinx.android.synthetic.main.fragment_setting.*
 import kotlinx.android.synthetic.main.fragment_setting.view.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
@@ -131,17 +135,20 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     }
 
     private fun loadImage() {
-        val bitmap = AppPreferences.getImage()
-        if (bitmap != null) {
-            try {
-                profileIV.setImageBitmap(AppPreferences.getImage())
-            } catch (e: Exception) {
+        GlobalScope.launch {
+            val bitmap = AppPreferences.getImage()
+            withContext(Dispatchers.Main) {
+                if (bitmap != null) {
+                    try {
+                        profileIV.setImageBitmap(AppPreferences.getImage())
+                    } catch (e: Exception) {
+                    }
+                } else {
+                    profileIV.setImageResource(R.drawable.user)
+                }
             }
-        } else {
-            profileIV.setImageResource(R.drawable.user)
         }
     }
-
 
     private fun openImageSelector() {
         val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -155,8 +162,12 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
             if (requestCode == AppConstants.PICK_PHOTO_FOR_AVATAR) {
                 val returnUri: Uri = data?.data!!
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, returnUri)
-                AppPreferences.saveImage(bitmap)
-                loadImage()
+                GlobalScope.launch {
+                    AppPreferences.saveImage(bitmap)
+                    withContext(Dispatchers.Main) {
+                        loadImage()
+                    }
+                }
             }
 
         }

@@ -3,13 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?cardItemBackground"
+    android:background="?backgroundColor"
     android:gravity="center"
     android:orientation="vertical"
-    android:paddingLeft="@dimen/normalPadding"
-    android:paddingTop="@dimen/normalPadding"
-    android:paddingRight="@dimen/normalPadding"
-    android:paddingBottom="@dimen/normalPadding">
+    android:padding="@dimen/normalPadding">
 
 
     <androidx.appcompat.widget.AppCompatTextView

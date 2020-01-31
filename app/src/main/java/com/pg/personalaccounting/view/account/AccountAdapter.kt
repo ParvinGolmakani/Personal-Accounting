@@ -39,7 +39,7 @@ class AccountAdapter(private val accountInterface: AccountInterface) :
         override fun onBind(item: Account) {
             itemView.accountNumberTV.text = item.accNumber
             itemView.bankNameTV.text = item.bankName
-            itemView.balanceTV.text = item.balance.toString()
+            itemView.balanceTV.text = "${item.balance}$"
         }
     }
 }

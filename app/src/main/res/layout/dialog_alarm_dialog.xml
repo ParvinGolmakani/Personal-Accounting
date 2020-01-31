@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?backgroundColor"
+    android:orientation="vertical"
+    tools:context=".view.deposit_withdraw.DepositWithdrawActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
+        app:elevation="0dp"
+        tools:ignore="UnusedAttribute">
+
+        <Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:contentInsetStart="0dp"
+            android:contentInsetEnd="0dp"
+            tools:ignore="NewApi,UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/normalPadding"
+                    android:tint="?iconTintColor"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_back" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/pageTitle"
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/normalPadding"
+                    android:text="Warning!"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/lightGrey"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="true"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/normalPadding">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normalPadding"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
+                    app:srcCompat="@drawable/ic_dollar" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/_8sdp"
+                    android:text="@string/amount" />
+
+
+                <me.abhinay.input.CurrencyEditText
+                    android:id="@+id/amountET"
+                    style="@style/TextBig"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/bigPadding"
+                    android:layout_marginLeft="@dimen/bigPadding"
+                    android:enabled="false"
+                    android:inputType="number"
+                    android:padding="@dimen/normalPadding"
+                    android:text="0" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normalPadding"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
+                    app:srcCompat="@drawable/ic_description" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/_8sdp"
+                    android:text="@string/description" />
+
+
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/descET"
+                    style="@style/TextNormal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/bigPadding"
+                    android:layout_marginLeft="@dimen/bigPadding"
+                    android:enabled="false"
+                    android:padding="@dimen/normalPadding"
+                    android:singleLine="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normalPadding"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/_24sdp"
+                    android:layout_height="wrap_content"
+                    android:tint="?iconTintColor"
+                    app:srcCompat="@drawable/ic_credit_card" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    style="@style/TextNormal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/normalPadding"
+                    android:text="@string/account" />
+
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/selectAccount"
+                    style="@style/TextBig"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/bigPadding"
+                    android:layout_marginLeft="@dimen/bigPadding"
+                    android:padding="@dimen/normalPadding"
+                    android:singleLine="true"
+                    android:text="@string/select_account"
+                    android:textColor="@color/linkColor" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?positiveColor"
+        android:text="@string/confirm"
+        android:textColor="@color/white" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

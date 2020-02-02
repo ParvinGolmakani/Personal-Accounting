@@ -28,6 +28,11 @@ class AlarmDialog :
         confirm.setOnClickListener {
             saveTransaction()
         }
+        if (transaction.isDeposit) {
+            pageTitle.text = getString(R.string.withdraw)
+        } else {
+            pageTitle.text = getString(R.string.deposit)
+        }
     }
 
 

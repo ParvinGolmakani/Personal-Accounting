@@ -1,6 +1,7 @@
 package com.pg.personalaccounting.view.account
 
 import android.content.Intent
+import android.view.View
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pg.personalaccounting.R
@@ -9,6 +10,7 @@ import com.pg.personalaccounting.core.bases.BaseFragment
 import com.pg.personalaccounting.core.interfaces.AccountInterface
 import com.pg.personalaccounting.core.models.Account
 import kotlinx.android.synthetic.main.fragment_account.*
+import kotlinx.android.synthetic.main.layout_empty_account.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -32,13 +34,18 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
 
     override fun afterLoadView() {
         addAccountBtn.setOnClickListener {
-            val intent = Intent(context, AddAccountActivity::class.java)
-            startActivity(intent)
-
+            openAddAccount()
+        }
+        addAccountTV.setOnClickListener {
+            openAddAccount()
         }
         initRV()
     }
 
+    private fun openAddAccount() {
+        val intent = Intent(context, AddAccountActivity::class.java)
+        startActivity(intent)
+    }
 
     private fun initRV() {
         AccountList.layoutManager = LinearLayoutManager(context)
@@ -58,6 +65,13 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
 
             withContext(Dispatchers.Main) {
                 accountAdapter.submitList(list)
+                if (list.size == 0) {
+                    emptyLayout.visibility = View.VISIBLE
+                    AccountList.visibility = View.GONE
+                } else {
+                    emptyLayout.visibility = View.GONE
+                    AccountList.visibility = View.VISIBLE
+                }
             }
         }
     }

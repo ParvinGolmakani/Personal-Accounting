@@ -36,6 +36,11 @@ class ReportFilterDialog(context: Context, private val filterInterface: FilterIn
             filterInterface.getDates(dateToLong(fromDate), dateToLong(toDate))
             dismiss()
         }
+
+        clearSort.setOnClickListener {
+            filterInterface.clearFilter()
+            dismiss()
+        }
     }
 
 }

@@ -55,7 +55,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/lightGrey"
+                    android:background="?lineColor"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -180,6 +180,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:background="@drawable/bg_edit_text_2"
+                android:inputType="number"
                 android:paddingLeft="@dimen/_15sdp"
                 android:text="" />
 

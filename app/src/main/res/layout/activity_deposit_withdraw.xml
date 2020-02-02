@@ -62,7 +62,7 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_1sdp"
-                    android:background="@color/lightGrey"
+                    android:background="?lineColor"
                     android:orientation="vertical"
                     app:layout_constraintBottom_toBottomOf="parent" />
 
@@ -110,7 +110,7 @@
 
                 <me.abhinay.input.CurrencyEditText
                     android:id="@+id/amountET"
-                    style="@style/TextBig"
+                    android:background="@drawable/bg_edit_text_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/bigPadding"
@@ -145,7 +145,7 @@
 
                 <androidx.appcompat.widget.AppCompatEditText
                     android:id="@+id/descET"
-                    style="@style/TextNormal"
+                    android:background="@drawable/bg_edit_text_2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/bigPadding"
@@ -199,6 +199,7 @@
 
                 <androidx.appcompat.widget.AppCompatCheckBox
                     android:id="@+id/isCheck"
+                    android:buttonTint="?onSelectedColor"
                     android:layout_width="@dimen/_24sdp"
                     android:layout_height="@dimen/_24sdp" />
 

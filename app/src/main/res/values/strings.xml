@@ -43,4 +43,6 @@
     <string name="ok">OK</string>
     <string name="your_name">your name</string>
     <string name="enter_your_name">Enter your name</string>
+    <string name="this_is_your_transaction_alarm">This is your transaction alarm!</string>
+    <string name="clear_filter">Clear Filter</string>
 </resources>

@@ -39,6 +39,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
         }
     }
 
+    private var loadingDialog: ProgressDialog? = null
 
     override fun afterLoadView() {
         editName()
@@ -135,9 +136,11 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     }
 
     private fun loadImage() {
+        showLoading()
         GlobalScope.launch {
             val bitmap = AppPreferences.getImage()
             withContext(Dispatchers.Main) {
+                hideLoading()
                 if (bitmap != null) {
                     try {
                         profileIV.setImageBitmap(AppPreferences.getImage())
@@ -160,6 +163,9 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             if (requestCode == AppConstants.PICK_PHOTO_FOR_AVATAR) {
+
+                showLoading()
+
                 val returnUri: Uri = data?.data!!
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, returnUri)
                 GlobalScope.launch {
@@ -175,9 +181,7 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
 
     private fun restartApplication() {
         // Show wait dialog
-        val dialog = ProgressDialog(context)
-        dialog.setMessage("Changing theme ...")
-        dialog.show()
+        showLoading()
         // dialog shown
 
         // Restarting application
@@ -189,6 +193,18 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
             context!!.startActivity(mainIntent)
             Runtime.getRuntime().exit(0)
         }, 1000)
+    }
 
+    private fun showLoading() {
+        if (loadingDialog == null) {
+            loadingDialog = ProgressDialog(context)
+            loadingDialog!!.setMessage("Please wait ...")
+        }
+        loadingDialog!!.show()
+
+    }
+
+    private fun hideLoading() {
+        loadingDialog!!.hide()
     }
 }

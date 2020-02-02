@@ -56,6 +56,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
             openDepositWithdrawPage(false)
         }
 
+        setMonthColor()
+
         initRecyclerView()
         getData()
     }
@@ -113,8 +115,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         }
     }
 
-    override fun onResume() {
-        super.onResume()
+    private fun setMonthColor() {
+
     }
 
     override fun updateDate() {

@@ -25,6 +25,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <include android:id="@+id/emptyLayout" layout="@layout/layout_empty_account" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/AccountList"
         android:layout_width="0dp"

@@ -38,7 +38,7 @@
 
     <!--    calender styles-->
     <style name="CalenderViewCustom" parent="Theme.AppCompat">
-        <item name="colorAccent">@color/white</item>
+        <item name="colorAccent">@color/positiveColor</item>
     </style>
 
     <style name="CalenderViewDateCustomText" parent="android:TextAppearance.DeviceDefault.Small">

@@ -95,4 +95,9 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
             }
         }
     }
+
+    override fun clearFilter() {
+        getData()
+        dialog = ReportFilterDialog(context!!, this)
+    }
 }

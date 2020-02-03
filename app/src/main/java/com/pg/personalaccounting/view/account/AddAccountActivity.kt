@@ -32,7 +32,7 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
                         0,
                         accType.text.toString(),
                         accNum.text.toString(),
-                        "$yearET-$monthET-$dayET",
+                        "${yearET.text}-${monthET.text}-${dayET.text}",
                         balance.cleanDoubleValue
                         ,
                         bankName.text.toString()

@@ -24,10 +24,14 @@ class AlarmDialog :
 
 
     override fun afterLoadView() {
-        getData()
+
+        setAccount()
+
         confirm.setOnClickListener {
             saveTransaction()
         }
+
+        // set page title in UI
         if (transaction.isDeposit) {
             pageTitle.text = getString(R.string.withdraw)
         } else {
@@ -36,10 +40,13 @@ class AlarmDialog :
     }
 
 
-    private fun getData() {
+    private fun setAccount() {
+        // get account by transactionID
         GlobalScope.launch {
             account = BaseApplication.database.accountDao().getAccountById(transaction.accountId)
             withContext(Dispatchers.Main) {
+
+                // set fields in UI
                 initView()
             }
         }
@@ -54,6 +61,7 @@ class AlarmDialog :
 
     @SuppressLint("NewApi")
     private fun saveTransaction() {
+        // check filed is entered
         if (amountET.text.toString().isNotEmpty()) {
             GlobalScope.launch {
                 BaseApplication.database.transactionDao().insertTransaction(transaction)
@@ -62,6 +70,8 @@ class AlarmDialog :
                 saveBalance(transaction)
 
                 withContext(Dispatchers.Main) {
+
+                    // show message
                     showToast("DONE!")
                     DepositWithdrawActivity.updateDataInterface.updateDate()
                     onBackPressed()
@@ -73,12 +83,15 @@ class AlarmDialog :
 
     private fun saveBalance(transaction: Transaction) {
 
+        // update account balance
         var sign = 1
         if (!transaction.isDeposit) {
             sign = -1
         }
         val amount = transaction.amount * sign
         account.balance = (account.balance + amount)
+
+        // update account in database
         BaseApplication.database.accountDao().updateAccount(account)
 
     }

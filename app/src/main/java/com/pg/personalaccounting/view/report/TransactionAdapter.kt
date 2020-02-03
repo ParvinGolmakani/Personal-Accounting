@@ -56,6 +56,7 @@ class TransactionAdapter :
             itemView.amountTV.text = "$amountSign${item.amount}$"
         }
 
+        // set transaction icon and sign
         private fun setSign(itemView: View, transaction: Transaction) {
             if (transaction.isDeposit) {
                 amountSign = "+"

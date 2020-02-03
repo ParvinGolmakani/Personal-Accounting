@@ -21,6 +21,8 @@ class ReportFilterDialog(context: Context, private val filterInterface: FilterIn
 
     @RequiresApi(Build.VERSION_CODES.N)
     private fun initViews() {
+
+        // on filter clicked
         filterBTN.setOnClickListener {
             val fromDate = getStringDate(
                 fromLayout.yearET.text.toString(),
@@ -33,6 +35,8 @@ class ReportFilterDialog(context: Context, private val filterInterface: FilterIn
                 toLayout.monthET.text.toString(),
                 toLayout.dayET.text.toString()
             )
+
+            // send selected date to Report Fragment
             filterInterface.getDates(dateToLong(fromDate), dateToLong(toDate))
             dismiss()
         }

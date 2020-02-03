@@ -31,7 +31,6 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
     private val accountAdapter = AccountAdapter(this)
     var list = ArrayList<Account>()
 
-
     override fun afterLoadView() {
         addAccountBtn.setOnClickListener {
             openAddAccount()
@@ -59,6 +58,9 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
     }
 
     private fun getData() {
+
+        // get data from database
+
         GlobalScope.launch {
             list =
                 BaseApplication.database.accountDao().getAccount() as ArrayList<Account>
@@ -79,7 +81,7 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
     private fun search(word: String) {
         GlobalScope.launch {
             list =
-                BaseApplication.database.accountDao().searchAccount(word) as ArrayList<Account>
+                BaseApplication.database.accountDao().searchAccount("%$word%") as ArrayList<Account>
 
             withContext(Dispatchers.Main) {
                 accountAdapter.submitList(list)
@@ -87,6 +89,7 @@ class AccountFragment : BaseFragment(R.layout.fragment_account), AccountInterfac
         }
     }
 
+    // on item clicked
     override fun getAccount(account: Account) {
         EditAccount.selectedAccount = account
         context?.startActivity(Intent(context, EditAccount::class.java))

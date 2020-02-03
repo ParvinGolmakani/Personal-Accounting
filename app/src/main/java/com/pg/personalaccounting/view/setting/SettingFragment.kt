@@ -17,7 +17,6 @@ import com.pg.personalaccounting.core.interfaces.NameInterface
 import com.pg.personalaccounting.core.utils.AppConstants
 import com.pg.personalaccounting.core.utils.AppPreferences
 import kotlinx.android.synthetic.main.fragment_setting.*
-import kotlinx.android.synthetic.main.fragment_setting.view.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -42,29 +41,35 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     private var loadingDialog: ProgressDialog? = null
 
     override fun afterLoadView() {
+
         editName()
+
+        // load user profile image
         loadImage()
+
+        // set change theme button
         setThemeName()
+
         // On click events
-        mView.share.setOnClickListener {
+        share.setOnClickListener {
             shareApp()
         }
-        mView.contactUs.setOnClickListener {
+        contactUs.setOnClickListener {
             contactUs()
         }
-        mView.aboutUs.setOnClickListener {
+        aboutUs.setOnClickListener {
             val aboutUs = AboutUsDialog(context!!)
             aboutUs.show()
         }
-        mView.themeButton.setOnClickListener {
+        themeButton.setOnClickListener {
             changeTheme()
         }
-        mView.nameTV.setOnClickListener {
+        nameTV.setOnClickListener {
             val dialog = NameDialog(this.context!!, this)
             dialog.show()
 
         }
-        mView.profileIV.setOnClickListener {
+        profileIV.setOnClickListener {
             imageOpenHandler()
         }
     }
@@ -78,6 +83,8 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     }
 
     private fun editName() {
+
+        // set name in ui
         nameTV.text = AppPreferences.getName()
     }
 
@@ -117,7 +124,9 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     }
 
     private fun imageOpenHandler() {
-        var permissionListener = object : PermissionListener {
+
+        //check permission
+        val permissionListener = object : PermissionListener {
             override fun onPermissionGranted() {
                 openImageSelector()
             }
@@ -154,17 +163,25 @@ class SettingFragment : BaseFragment(R.layout.fragment_setting), NameInterface {
     }
 
     private fun openImageSelector() {
+
+        // open gallery for pick up image
+
         val intent = Intent(Intent.ACTION_GET_CONTENT)
         intent.type = "image/*"
         startActivityForResult(intent, AppConstants.PICK_PHOTO_FOR_AVATAR)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        // image selected
+
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == RESULT_OK) {
             if (requestCode == AppConstants.PICK_PHOTO_FOR_AVATAR) {
 
                 showLoading()
+
+                //save image bitmap to local database and show in ui
 
                 val returnUri: Uri = data?.data!!
                 val bitmap = MediaStore.Images.Media.getBitmap(activity?.contentResolver, returnUri)

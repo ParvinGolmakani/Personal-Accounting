@@ -21,9 +21,13 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
 
     private fun saveAccount() {
 
+        // check all of fields are entered
         if (accType.text.toString().isNotEmpty() and accNum.text.toString().isNotEmpty() and balance.text.toString().isNotEmpty()) {
             try {
                 GlobalScope.launch {
+
+                    // make an object from Account
+                    // id = 0 means generate id
                     val account = Account(
                         0,
                         accType.text.toString(),
@@ -33,8 +37,11 @@ class AddAccountActivity : BaseActivity(R.layout.activity_add_account) {
                         ,
                         bankName.text.toString()
                     )
+
+                    // save account
                     BaseApplication.database.accountDao().insertAccount(account)
                     withContext(Dispatchers.Main) {
+                        // show message
                         showToast("Account Saved")
                         onBackPressed()
                     }

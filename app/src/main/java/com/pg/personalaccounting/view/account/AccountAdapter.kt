@@ -22,6 +22,7 @@ class AccountAdapter(private val accountInterface: AccountInterface) :
         }
     }) {
 
+    // set layout UI
     override val viewID: Int
         get() = R.layout.item_account
 
@@ -29,12 +30,14 @@ class AccountAdapter(private val accountInterface: AccountInterface) :
         return AccountViewHolder(parent)
     }
 
+    // on clicks
     override fun setClickListeners(holder: AccountViewHolder, position: Int) {
         holder.itemView.mainLayout.setOnClickListener {
             accountInterface.getAccount(getItem(position))
         }
     }
 
+    // fill views
     class AccountViewHolder(itemView: View) : BaseViewHolder<Account>(itemView) {
         override fun onBind(item: Account) {
             itemView.accountNumberTV.text = item.accNumber

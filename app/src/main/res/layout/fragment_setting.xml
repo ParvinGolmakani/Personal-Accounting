@@ -93,7 +93,7 @@
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:background="@drawable/button_bg"
                 android:text="@string/drak"
-                android:textColor="#ffffff"></Button>
+                android:textColor="#ffffff" />
         </LinearLayout>
 
 

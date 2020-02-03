@@ -193,7 +193,7 @@
                     android:layout_marginLeft="@dimen/bigPadding"
                     android:padding="@dimen/normalPadding"
                     android:singleLine="true"
-                    android:text="@string/select_account"
+                    android:text="@string/bank_name"
                     android:textColor="@color/linkColor" />
             </LinearLayout>
 

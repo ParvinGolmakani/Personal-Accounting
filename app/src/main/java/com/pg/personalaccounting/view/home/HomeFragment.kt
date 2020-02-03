@@ -56,19 +56,19 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
             openDepositWithdrawPage(false)
         }
 
-        setMonthColor()
-
         initRecyclerView()
         getData()
     }
 
     private fun openDepositWithdrawPage(isDeposit: Boolean) {
-        // set data for other page
+        // send date to Deposit and withdraw page
         val bundle = Bundle()
         bundle.putInt("year", year)
         bundle.putInt("month", month)
         bundle.putInt("day", day)
         bundle.putBoolean("isDeposit", isDeposit)
+
+        // callback
         DepositWithdrawActivity.updateDataInterface = this
         activity!!.startActivity(
             Intent(activity, DepositWithdrawActivity::class.java).putExtras(
@@ -92,6 +92,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
 
     @SuppressLint("SimpleDateFormat")
     fun getTodayDate(): String {
+
         val c = Calendar.getInstance().time
 
         val sdf = SimpleDateFormat(AppConstants.dateFormat)
@@ -115,11 +116,10 @@ class HomeFragment : BaseFragment(R.layout.fragment_home), CalendarView.OnDateCh
         }
     }
 
-    private fun setMonthColor() {
-
-    }
 
     override fun updateDate() {
+
+        // if transaction added , this function will call and page will update
         getData()
     }
 }

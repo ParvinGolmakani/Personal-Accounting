@@ -11,5 +11,4 @@ class AboutUsDialog(context: Context) : BaseDialog(context, R.layout.dialog_abou
             dismiss()
         }
     }
-
 }

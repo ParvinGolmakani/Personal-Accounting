@@ -29,12 +29,13 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
     private val transactionAdapter = TransactionAdapter()
     var list = ArrayList<Transaction>()
 
+    // filter and sort dialog
     lateinit var dialog: ReportFilterDialog
 
     override fun afterLoadView() {
         initRV()
 
-        // dialog
+        // init dialog
         dialog = ReportFilterDialog(context!!, this)
         filterIV.setOnClickListener {
             dialog.show()
@@ -45,20 +46,24 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
         transactionsRV.layoutManager = LinearLayoutManager(context)
         transactionsRV.adapter = transactionAdapter
 
+        // search
         searchET.addTextChangedListener {
             if (it!!.isNotEmpty())
                 search(it.toString())
             else
+            // if search field is empty
                 getData()
         }
     }
 
     private fun getData() {
+        // get transactions from database
         GlobalScope.launch {
             list =
                 BaseApplication.database.transactionDao().getTransaction() as ArrayList<Transaction>
 
             withContext(Dispatchers.Main) {
+                // data has been received , now has been shown on UI
                 transactionAdapter.submitList(list)
             }
         }
@@ -66,11 +71,13 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
 
 
     private fun search(word: String) {
+        // search from database
         GlobalScope.launch {
             list =
-                BaseApplication.database.transactionDao().searchTransactions(word) as ArrayList<Transaction>
+                BaseApplication.database.transactionDao().searchTransactions("%$word%") as ArrayList<Transaction>
 
             withContext(Dispatchers.Main) {
+                // data has been received , now has been shown on UI
                 transactionAdapter.submitList(list)
             }
         }
@@ -82,6 +89,8 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
     }
 
     override fun getDates(from: Long, to: Long) {
+
+        // show transaction between 2 dates , from , to
         GlobalScope.launch {
             list =
                 BaseApplication.database.transactionDao().getTransactionByDates(
@@ -90,6 +99,8 @@ class ReportFragment : BaseFragment(R.layout.fragment_report), FilterInterface {
                 ) as ArrayList<Transaction>
 
             withContext(Dispatchers.Main) {
+
+                // update ui
                 transactionAdapter.submitList(list)
                 showToast("Done!")
             }

@@ -35,7 +35,7 @@ object AppPreferences {
     // Save and Get image
     fun saveImage(bitmap: Bitmap) {
         val baos = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        bitmap.compress(Bitmap.CompressFormat.PNG, 50, baos)
         val b: ByteArray = baos.toByteArray()
         val imageEncoded: String = Base64.encodeToString(b, Base64.DEFAULT)
         BaseApplication.preferencesEditor.putString("image", imageEncoded)

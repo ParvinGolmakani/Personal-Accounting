@@ -19,10 +19,18 @@ class EditAccount : BaseActivity(R.layout.activity_add_account) {
     }
 
     override fun afterLoadView() {
+
+        // be jaye on create
+
         initView()
         buttonSaveAcc.setOnClickListener {
             updateAccount()
         }
+        back.setOnClickListener {
+            onBackPressed()
+        }
+        pageTitle.text = "Edit Account"
+
     }
 
     private fun initView() {

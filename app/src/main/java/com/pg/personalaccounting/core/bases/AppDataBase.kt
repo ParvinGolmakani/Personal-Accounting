@@ -11,7 +11,7 @@ import com.pg.personalaccounting.core.models.Transaction
 
 // Annotates class to be a Room Database with a table (entity) of the Word class
 @Database(entities = [Account::class, Transaction::class], version = 1, exportSchema = false)
- abstract class AppDataBase : RoomDatabase() {
+abstract class AppDataBase : RoomDatabase() {
 
     abstract fun transactionDao(): TransactionDao
     abstract fun accountDao(): AccountDao
@@ -22,16 +22,16 @@ import com.pg.personalaccounting.core.models.Transaction
         @Volatile
         private var INSTANCE: AppDataBase? = null
 
-        fun getDatabase(context: Context): AppDataBase{
+        fun getDatabase(context: Context): AppDataBase {
             val tempInstance = INSTANCE
             if (tempInstance != null) {
                 return tempInstance
             }
             synchronized(this) {
                 val instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        AppDataBase::class.java,
-                        "my_db"
+                    context.applicationContext,
+                    AppDataBase::class.java,
+                    "my_db"
                 ).build()
                 INSTANCE = instance
                 return instance

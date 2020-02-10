@@ -25,4 +25,7 @@ interface TransactionDao {
 
     @Query("SELECT * FROM transactions where transactions.`desc` like :word")
     fun searchTransactions(word: String): List<Transaction>
+
+//    @Query("select * from transactions")
+//    fun getTransaction2(): List<Transaction>
 }
